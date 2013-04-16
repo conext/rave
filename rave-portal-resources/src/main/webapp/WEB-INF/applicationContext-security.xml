@@ -24,13 +24,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:opensaml="http://www.surfnet.nl/schema/security/opensaml"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/security
-          http://www.springframework.org/schema/security/spring-security.xsd">
+          http://www.springframework.org/schema/security/spring-security.xsd
+          http://www.surfnet.nl/schema/security/opensaml
+          http://www.surfnet.nl/schema/security/spring-security-opensaml-1.0.xsd">
+
     <security:http auto-config="true" use-expressions="true" disable-url-rewriting="true" request-matcher="regex">
         <security:intercept-url pattern="\A/static(\?.*|/.*)\Z" access="permitAll"/>
         <security:intercept-url pattern="\A/login\Z" access="permitAll"/>
+        <security:intercept-url pattern="^/OpenSAML.sso.*$" access="permitAll"/>
         <security:intercept-url pattern="\A/app/newaccount\.jsp(\?.*)?\Z" access="permitAll"/>
         <security:intercept-url pattern="\A/app/newaccount(\?.*|/.*)?\Z" access="permitAll"/>
         <security:intercept-url pattern="\A/app/openidregister(\?.*|/.*)?\Z" access="permitAll"/>
@@ -41,15 +46,20 @@
         <security:intercept-url pattern="\A/app/admin(\?.*|/.*)\Z" access="hasRole('ROLE_ADMIN')"/>
         <!-- all urls must be authenticated -->
         <security:intercept-url pattern="\A/.*\Z" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
-        <security:openid-login user-service-ref="userService" authentication-failure-handler-ref="openIdAuthFailureHandler">
+        <security:openid-login user-service-ref="userService"
+                               authentication-failure-handler-ref="openIdAuthFailureHandler">
             <security:attribute-exchange identifier-match="https://www.google.com.*">
-                <security:openid-attribute name="email" type="http://axschema.org/contact/email" required="true" count="1"/>
-                <security:openid-attribute name="firstname" type="http://axschema.org/namePerson/first" required="true"/>
+                <security:openid-attribute name="email" type="http://axschema.org/contact/email" required="true"
+                                           count="1"/>
+                <security:openid-attribute name="firstname" type="http://axschema.org/namePerson/first"
+                                           required="true"/>
                 <security:openid-attribute name="lastname" type="http://axschema.org/namePerson/last" required="true"/>
             </security:attribute-exchange>
             <security:attribute-exchange identifier-match=".*openid-provider.appspot.com.*">
-                <security:openid-attribute name="email" type="http://axschema.org/contact/email" required="true" count="1"/>
-                <security:openid-attribute name="firstname" type="http://axschema.org/namePerson/first" required="true"/>
+                <security:openid-attribute name="email" type="http://axschema.org/contact/email" required="true"
+                                           count="1"/>
+                <security:openid-attribute name="firstname" type="http://axschema.org/namePerson/first"
+                                           required="true"/>
                 <security:openid-attribute name="lastname" type="http://axschema.org/namePerson/last" required="true"/>
             </security:attribute-exchange>
             <security:attribute-exchange identifier-match=".*yahoo.com.*">
@@ -57,16 +67,46 @@
                 <security:openid-attribute name="fullname" type="http://axschema.org/namePerson" required="true"/>
             </security:attribute-exchange>
             <security:attribute-exchange identifier-match=".*myopenid.com.*">
-                <security:openid-attribute name="email" type="http://schema.openid.net/contact/email" required="true" count="1"/>
+                <security:openid-attribute name="email" type="http://schema.openid.net/contact/email" required="true"
+                                           count="1"/>
                 <security:openid-attribute name="fullname" type="http://schema.openid.net/namePerson" required="true"/>
-             </security:attribute-exchange>
+            </security:attribute-exchange>
         </security:openid-login>
-        <security:form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?authfail=form" />
+        <!--<security:form-login login-page="/login" default-target-url="/"-->
+                             <!--authentication-failure-url="/login?authfail=form"/>-->
         <security:logout/>
-        <security:remember-me user-service-ref="userService" />
+        <security:remember-me user-service-ref="userService"/>
+
+        <security:anonymous/>
+
+        <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/OpenSAML.sso/Login" access="permitAll"/>
+        <security:intercept-url pattern="/landingpage" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="${ASSERTION_CONSUMER_URI}"
+                                access="hasAnyRole(ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER)"/>
+
+        <!-- remove the following? -->
+        <security:intercept-url pattern="/newaccount.jsp*" access="permitAll"/>
+        <security:intercept-url pattern="/app/newaccount*" access="permitAll"/>
+        <security:intercept-url pattern="/app/newpassword/*" access="permitAll"/>
+        <security:intercept-url pattern="/app/retrieveusername/*" access="permitAll"/>
+        <security:intercept-url pattern="/app/changepassword/*" access="permitAll"/>
+        <security:intercept-url pattern="/app/messagebundle/*.js" access="permitAll"/>
+        <security:intercept-url pattern="/css/*" access="permitAll"/>
+        <security:intercept-url pattern="/images/*" access="permitAll"/>
+        <security:intercept-url pattern="/script/*" access="permitAll"/>
+        <security:intercept-url pattern="/app/admin/*" access="hasRole('ROLE_ADMIN')"/>
+
+        <!-- all urls must be authenticated -->
+        <security:intercept-url pattern="/*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+
+        <security:form-login login-page="/OpenSAML.sso/Login?target=${wayf.url.sso}" default-target-url="/" />
+
+        <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
     </security:http>
 
-    <security:ldap-server ldif="classpath:users.ldiff" root="dc=rave,dc=apache,dc=org" />
+
+    <security:ldap-server ldif="classpath:users.ldiff" root="dc=rave,dc=apache,dc=org"/>
 
     <security:authentication-manager>
         <security:ldap-authentication-provider
@@ -83,19 +123,19 @@
     </security:authentication-manager>
 
 
-
-    <bean id="raveUserContextMapper" class="org.apache.rave.portal.web.security.LdapUserDetailsContextMapper" >
+    <bean id="raveUserContextMapper" class="org.apache.rave.portal.web.security.LdapUserDetailsContextMapper">
         <constructor-arg name="userService" ref="userService"/>
         <constructor-arg name="newAccountService" ref="defaultNewAccountService"/>
         <constructor-arg name="mailAttributeName" value="mail"/>
         <constructor-arg name="displayNameAttributeName" value="displayName"/>
         <constructor-arg name="pageLayoutCode" value="columns_3"/>
     </bean>
-    
-    <bean id="openIdAuthFailureHandler" class="org.apache.rave.portal.web.controller.handler.OpenIDAuthenticationFailureHandler">
+
+    <bean id="openIdAuthFailureHandler"
+          class="org.apache.rave.portal.web.controller.handler.OpenIDAuthenticationFailureHandler">
         <property name="defaultFailureUrl" value="/login?authfail=openid"/>
     </bean>
-    
+
 
     <!-- enable the spring security annotations -->
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled">
@@ -104,6 +144,41 @@
 
     <!-- override the default permissionEvaluator bean used by Spring Security with our custom RavePermissionEvaluator -->
     <bean id="expressionHandler" class="org.apache.rave.portal.security.impl.RaveMethodSecurityExpressionHandler">
-        <property name="permissionEvaluator" ref="ravePermissionEvaluator" />
+        <property name="permissionEvaluator" ref="ravePermissionEvaluator"/>
     </bean>
+
+    <bean id="samlProvisioner" class="uk.co.cloudidentity.rave.portal.web.ProvisionerImpl">
+        <property name="newAccountService" ref="defaultNewAccountService"/>
+        <property name="userService" ref="userService"/>
+        <property name="attributeEmail" value="urn:mace:dir:attribute-def:mail"/>
+        <property name="attributeUsername" value="urn:oid:1.3.6.1.4.1.1076.20.40.40.1"/>
+        <property name="attributeDisplay" value="urn:mace:dir:attribute-def:displayName"/>
+        <property name="attributeGivenname" value="urn:mace:dir:attribute-def:givenName"/>
+        <property name="attributeSurname" value="urn:mace:dir:attribute-def:sn"/>
+    </bean>
+
+    <bean id="samlCertificateStore" class="nl.surfnet.spring.security.opensaml.KeyStore">
+        <property name="certificates">
+            <map>
+                <entry key="${wayf.url.metadata}" value="${wayf.certificate}"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean class="nl.surfnet.spring.security.opensaml.crypt.KeyStoreCredentialResolverDelegate" id="keyStoreCredentialResolverDelegate">
+        <property name="keyStore" ref="samlCertificateStore"/>
+    </bean>
+
+    <opensaml:service-provider id="samlAuthenticationProvider"
+                               message-handler-ref="samlMessageHandler"
+                               preauth-filter-ref="samlPreAuthFilter"
+                               entity-id="${ISSUING_ENTITY_ID}"
+                               assertion-consumer-uri="${ASSERTION_CONSUMER_URI}"
+                               provisioner-ref="samlProvisioner"
+                               certificatestore-ref="samlCertificateStore"
+                               authentication-manager-ref="authenticationManager"/>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="samlAuthenticationProvider"/>
+    </security:authentication-manager>
 </beans>

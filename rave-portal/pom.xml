@@ -74,6 +74,25 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.15</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.surfnet.coin</groupId>
+            <artifactId>spring-security-opensaml</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>xml-apis</artifactId>
+            <groupId>xml-apis</groupId>
+            <version>1.4.01</version>
+        </dependency>
+
         <!-- Default database -->
         <dependency>
             <groupId>com.h2database</groupId>

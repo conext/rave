@@ -156,5 +156,9 @@ be overridden by setting a system property "portal.override.properties" -->
 
     <util:properties id="messages" location="classpath:messages.properties" />
 
+    <bean class="org.opensaml.DefaultBootstrap" id="bootstrap" init-method="bootstrap">
+
+    </bean>
+
 
 </beans>
