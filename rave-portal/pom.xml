@@ -97,6 +97,13 @@
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <!-- Test -->
@@ -217,6 +224,9 @@
                             as you are running on Apple OS X and have a value set for java.io.tmpdir  -->
                             <!-- <net.sf.ehcache.pool.sizeof.AgentSizeOf.bypass>true</net.sf.ehcache.pool.sizeof.AgentSizeOf.bypass>  -->
 
+                            <portal.override.properties>classpath:ci-portal.properties</portal.override.properties>
+                            <rave-shindig.override.properties>classpath:ci-rave.shindig.properties</rave-shindig.override.properties>
+
 	                   <!-- Documentation: http://rave.apache.org/documentation/host-configuration.html -->
                             <!--
                                 <portal.override.properties>/path/to/custom.portal.properties</portal.override.properties>
@@ -244,6 +254,20 @@
                             </dependency>
                         </dependencies>
                     </container>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.jelastic</groupId>
+                <artifactId>jelastic-maven-plugin</artifactId>
+                <version>1.7-SNAPSHOT</version>
+                <configuration>
+                    <email>deployment@cloudidentity.co.uk</email>
+                    <password>xLCSeiXskB</password>
+                    <context>portal</context>
+                    <environment>conext-portal</environment>
+                    <comment>Conext Portal</comment>
+
+                    <api_hoster>app.appengine.flow.ch</api_hoster>
                 </configuration>
             </plugin>
         </plugins>
