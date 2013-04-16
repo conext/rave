@@ -87,6 +87,10 @@
                     <artifactId>xml-apis</artifactId>
                     <groupId>xml-apis</groupId>
                 </exclusion>
+                    <exclusion>
+                        <artifactId>log4j-over-slf4j</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
             </exclusions>
         </dependency>
 
@@ -110,6 +114,12 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>xml-apis</artifactId>
+            <groupId>xml-apis</groupId>
+            <version>1.4.01</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
