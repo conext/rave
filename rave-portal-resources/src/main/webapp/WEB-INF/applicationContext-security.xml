@@ -81,6 +81,7 @@
 
         <security:intercept-url pattern="/login" access="permitAll"/>
         <security:intercept-url pattern="/OpenSAML.sso/Login" access="permitAll"/>
+        <security:intercept-url pattern="/OpenSAML.sso/Metadata" access="permitAll"/>
         <security:intercept-url pattern="/landingpage" access="hasRole('ROLE_USER')"/>
         <security:intercept-url pattern="${ASSERTION_CONSUMER_URI}"
                                 access="hasAnyRole(ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER)"/>

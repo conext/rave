@@ -39,7 +39,7 @@
         <!-- if you want to start remote debugging session suspended
   override on command line with -Dcargo.debug.suspend=y -->
         <cargo.debug.suspend>n</cargo.debug.suspend>
-        <cargo.args />
+        <cargo.args >-Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties"</cargo.args>
     </properties>
 
     <dependencies>
@@ -55,6 +55,12 @@
             <groupId>org.apache.rave</groupId>
             <artifactId>rave-portal-dependencies</artifactId>
             <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xml-apis</artifactId>
+                    <groupId>xml-apis</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.rave</groupId>
@@ -221,9 +227,10 @@
                             cargo.datasource.password=${shindig.dataSource.password}
                           </cargo.datasource.datasource.shindigDB>
                             <cargo.jvmargs>
-                                <![CDATA[-Dh2.bindAddress="localhost" -Xdebug -XX:MaxPermSize=256m -Xrunjdwp:transport=dt_socket,address=${cargo.debug.address},server=y,suspend=${cargo.debug.suspend} -noverify ${javaagent} ${cargo.args}]]>
+                                    <![CDATA[-Dh2.bindAddress="localhost" -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties" -Xdebug -XX:MaxPermSize=256m -Xrunjdwp:transport=dt_socket,address=${cargo.debug.address},server=y,suspend=${cargo.debug.suspend} -noverify ${javaagent} ${cargo.args}]]>
                             </cargo.jvmargs>
                             <cargo.tomcat.context.reloadable>true</cargo.tomcat.context.reloadable>
+                            <cargo.servlet.port>8080</cargo.servlet.port>
                         </properties>
                         <home>${project.build.directory}/tomcat6x</home>
                         <configfiles>

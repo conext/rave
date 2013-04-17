@@ -108,6 +108,11 @@
         <url-pattern>/OpenSAML.sso/Login</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>mydispatcher</servlet-name>
+        <url-pattern>/OpenSAML.sso/Metadata</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
