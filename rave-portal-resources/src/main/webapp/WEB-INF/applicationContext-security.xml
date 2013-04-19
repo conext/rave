@@ -74,7 +74,6 @@
         </security:openid-login>
         <!--<security:form-login login-page="/login" default-target-url="/"-->
                              <!--authentication-failure-url="/login?authfail=form"/>-->
-        <security:logout/>
         <security:remember-me user-service-ref="userService"/>
 
         <security:anonymous/>
@@ -102,6 +101,7 @@
         <security:intercept-url pattern="/*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
         <security:form-login login-page="/OpenSAML.sso/Login?target=${wayf.url.sso}" default-target-url="/" />
+        <security:logout delete-cookies="JSESSIONID" logout-success-url="/OpenSAML.sso/Login?target=${wayf.url.sso}/logout"/>
 
         <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
     </security:http>
