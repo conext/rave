@@ -72,8 +72,7 @@
                 <security:openid-attribute name="fullname" type="http://schema.openid.net/namePerson" required="true"/>
             </security:attribute-exchange>
         </security:openid-login>
-        <!--<security:form-login login-page="/login" default-target-url="/"-->
-                             <!--authentication-failure-url="/login?authfail=form"/>-->
+
         <security:remember-me user-service-ref="userService"/>
 
         <security:anonymous/>
