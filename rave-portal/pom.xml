@@ -309,6 +309,7 @@
         <profile>
             <id>dist</id>
             <build>
+                <finalName>conext</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
@@ -349,7 +350,7 @@
                                     <goal>single</goal>
                                 </goals>
                                 <configuration>
-                                    <finalName>apache-rave-${project.version}</finalName>
+                                    <finalName>conext</finalName>
                                     <descriptors>
                                         <descriptor>${project.basedir}/src/main/assembly/distbin.xml</descriptor>
                                     </descriptors>
