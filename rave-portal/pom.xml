@@ -239,6 +239,11 @@
                                 <todir>conf/</todir>
                                 <tofile>tomcat-users.xml</tofile>
                             </configfile>
+                            <configfile>
+                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/bin/setenv.sh</file>
+                                <todir>bin/</todir>
+                                <tofile>setenv.sh</tofile>
+                            </configfile>
                         </configfiles>
                     </configuration>
                     <container>

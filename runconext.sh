@@ -1,7 +1,7 @@
 #!/bin/bash
-sh /home/apps/conext-bamboo/conext/bin/shutdown.sh
+sudo sh /home/apps/conext-bamboo/conext/bin/shutdown.sh
 sleep 5
-rm -rf /home/apps/conext-bamboo/conext
-tar -zxvf /home/apps/conext-bamboo/conext-bin.tar.gz
-sh /home/apps/conext-bamboo/conext/bin/startup.sh
+sudo rm -rf /home/apps/conext-bamboo/conext
+sudo tar -zxvf /home/apps/conext-bamboo/conext-bin.tar.gz -C /home/apps/conext-bamboo/
+sudo sh /home/apps/conext-bamboo/conext/bin/startup.sh
 exit 0
