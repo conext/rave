@@ -50,6 +50,12 @@
     <context:component-scan base-package="org.apache.rave.opensocial" annotation-config="true"/>
     <context:component-scan base-package="org.apache.rave.service" annotation-config="true"/>
 
+    <bean class="org.apache.rave.opensocial.service.impl.CoinGroupService">
+        <property name="oauthSecret" value="${oauthSecret}"/>
+        <property name="oauthKey" value="${oauthKey}"/>
+        <property name="apiLocation" value="${apiLocation}"/>
+    </bean>
+
     <bean id="oAuthStore" class="org.apache.rave.gadgets.oauth.inject.DefaultOAuthStore">
         <constructor-arg name="defaultCallbackUrl" value="${shindig.signing.global-callback-url}"/>
         <constructor-arg name="pathToPrivateKey" value="${shindig.signing.key-file}"/>
