@@ -39,20 +39,6 @@
         </property>
     </bean>
 
-    <!--
-    Bean that executes the given set of resources (SQL scripts) in order
-    To remove runtime initialization of initial data, remove this bean and change the entity manager factory to the default
-    Spring implementation
--->
-    <bean id="dataSourcePopulator" class="org.apache.rave.jdbc.util.DataSourcePopulator">
-        <property name="executeScriptQuery" value="SELECT * FROM page_layout"/>
-        <property name="scriptLocations">
-            <list>
-                <value>classpath:page_layouts.sql</value>
-            </list>
-        </property>
-    </bean>
-
     <!-- provides a H2 console to look into the db if necessary -->
     <bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"
           factory-method="createWebServer" depends-on="dataSource"
