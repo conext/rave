@@ -358,6 +358,11 @@
                         </executions>
                     </plugin>
                 </plugins>
+                <testResources>
+                    <testResource>
+                        <directory>${project.basedir}/src/test/resources_jpa</directory>
+                    </testResource>
+                </testResources>
             </build>
         </profile>
             <profile>
