@@ -39,10 +39,10 @@
         <!--</property>-->
     <!--</bean>-->
 
-    <!-- provides a H2 console to look into the db if necessary -->
-    <bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"
-          factory-method="createWebServer" depends-on="dataSource"
-          init-method="start" lazy-init="false" destroy-method="stop">
-        <constructor-arg value="-web,-webPort,11111"/>
-    </bean>
+    <!--&lt;!&ndash; provides a H2 console to look into the db if necessary &ndash;&gt;-->
+    <!--<bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"-->
+          <!--factory-method="createWebServer" depends-on="dataSource"-->
+          <!--init-method="start" lazy-init="false" destroy-method="stop">-->
+        <!--<constructor-arg value="-web,-webPort,11111"/>-->
+    <!--</bean>-->
 </beans>

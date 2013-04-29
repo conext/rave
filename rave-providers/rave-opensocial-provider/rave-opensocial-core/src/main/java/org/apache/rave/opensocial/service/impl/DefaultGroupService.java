@@ -32,10 +32,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Set;
 import java.util.concurrent.Future;
 
-@Service
-public class DefaultGroupService implements GroupService{
-    @Override
-    public Future<RestfulCollection<Group>> getGroups(UserId userId, CollectionOptions options, Set<String> fields, SecurityToken token) {
-      throw new ProtocolException(HttpServletResponse.SC_NOT_IMPLEMENTED, "Not Implemented");
-    }
+//@Service
+//public class DefaultGroupService implements GroupService{
+//    @Override
+//    public Future<RestfulCollection<Group>> getGroups(UserId userId, CollectionOptions options, Set<String> fields, SecurityToken token) {
+//      throw new ProtocolException(HttpServletResponse.SC_NOT_IMPLEMENTED, "Not Implemented");
+//    }
+//}
+
+
+public class DefaultGroupService {
+
 }

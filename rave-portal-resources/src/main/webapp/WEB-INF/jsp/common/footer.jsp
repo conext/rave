@@ -22,8 +22,8 @@ under the License.
     <div class="container">
         <div class="row">
             <div class="span12 version">
-                <span>Apache Rave ${applicationProperties['portal.version']}</span>
-                <a href="http://rave.apache.org"><img class="footer-logo" alt="Apache Rave" title="Apache Rave" src="<c:url value="/static/images/rave-logo-sm.png" />" /></a>
+                <span>Jacson Portal ${applicationProperties['portal.version']}</span>
+                <a href="http://portaldev.cloud.jiscadvance.biz:8080/portal/"><img class="footer-logo" alt="Conext" title="Conext" src="<c:url value="/static/images/conext.png" />" /></a>
             </div>
         </div>
     </div>
