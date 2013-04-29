@@ -172,17 +172,17 @@
   "views" : {
     "profile" : {
       "isOnlyVisible" : false,
-      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:8080${CONTEXT_ROOT}/gadgets/profile?{var}",
+      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:80${CONTEXT_ROOT}/gadgets/profile?{var}",
       "aliases": ["DASHBOARD", "default"]
     },
     "canvas" : {
       "isOnlyVisible" : true,
-      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:8080${CONTEXT_ROOT}/gadgets/canvas?{var}",
+      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:80${CONTEXT_ROOT}/gadgets/canvas?{var}",
       "aliases" : ["FULL_PAGE"]
     },
     "default" : {
       "isOnlyVisible" : false,
-      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:8080${CONTEXT_ROOT}/gadgets/default?{var}",
+      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:80${CONTEXT_ROOT}/gadgets/default?{var}",
       "aliases" : ["home", "profile", "canvas"]
     }
   },
