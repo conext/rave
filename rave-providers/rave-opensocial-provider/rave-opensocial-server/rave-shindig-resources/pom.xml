@@ -44,15 +44,6 @@
             <groupId>org.apache.shindig</groupId>
             <artifactId>shindig-social-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.scribe</groupId>
-            <artifactId>scribe</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.surfnet.coin</groupId>
-            <artifactId>coin-api-client</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>

@@ -105,4 +105,10 @@
         <constructor-arg name="privateKeyName" value="${shindig.signing.key-name}"/>
     </bean>-->
 
+    <bean class="org.apache.rave.opensocial.service.impl.CoinGroupService">
+        <property name="oauthSecret" value="${oauthSecret}"/>
+        <property name="oauthKey" value="${oauthKey}"/>
+        <property name="apiLocation" value="${apiLocation}"/>
+    </bean>
+
 </beans>
