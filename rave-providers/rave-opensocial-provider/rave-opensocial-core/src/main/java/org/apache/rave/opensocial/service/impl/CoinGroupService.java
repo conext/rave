@@ -79,8 +79,6 @@ public class CoinGroupService implements GroupService {
                 .debug()
                 .build();
 
-
-
         OAuthRequest req = new OAuthRequest(Verb.GET, apiLocation + "social/rest/groups/" + userId.getUserId(token));
         service.signRequest(new Token("", ""), req);
         Response response = req.send();
