@@ -111,4 +111,12 @@
         <property name="apiLocation" value="${apiLocation}"/>
     </bean>
 
+    <bean class="org.apache.rave.opensocial.service.impl.JacsonResourceService">
+        <property name="oauthSecret" value="${oauthSecret}"/>
+        <property name="oauthKey" value="${oauthKey}"/>
+        <property name="apiLocation" value="${apiLocation}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="regrouperApiLocation" value="${regroupApiLocation}"/>
+    </bean>
 </beans>

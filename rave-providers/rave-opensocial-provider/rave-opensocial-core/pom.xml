@@ -77,6 +77,12 @@
             <groupId>org.scribe</groupId>
             <artifactId>scribe</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.surfnet.coin</groupId>
             <artifactId>coin-api-client</artifactId>
