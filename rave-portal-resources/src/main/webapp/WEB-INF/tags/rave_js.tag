@@ -55,6 +55,8 @@
 <script>
     <%-- set the web application context --%>
     rave.setContext("<spring:url value="/app/" />");
+    <%-- set the application context for api --%>
+    rave.api.setContext("<spring:url value="/app/" />");
     <%-- set the javascript debug mode so js code has access to it --%>
     rave.setJavaScriptDebugMode(<c:out value="${jsDebugMode}"/>);
     <%-- set the default widget height so js code has access to it --%>
