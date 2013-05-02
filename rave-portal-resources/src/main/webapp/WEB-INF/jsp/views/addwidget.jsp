@@ -152,7 +152,6 @@
             $('#addWidgetForm').hide();
             $('#addWidgetFormSubmit').hide();
         }
-        rave.init();
     });
 </script>
 </portal:register-init-script>
