@@ -92,7 +92,7 @@
         <rave.dataSource.driver>com.mysql.jdbc.Driver</rave.dataSource.driver>
         <rave.dataSource.username>rave</rave.dataSource.username>
         <rave.dataSource.password>rave</rave.dataSource.password>
-        <rave.dataSource.url>jdbc:mysql://localhost:3306/rave?allowMultiQueries=true</rave.dataSource.url>
+        <rave.dataSource.url>jdbc:mysql://localhost:3306/rave</rave.dataSource.url>
 
         <!-- Rave Portal default jdbc datasource configuration: using rave default configuration shared with Shindig -->
         <portal.dataSource.driver>${rave.dataSource.driver}</portal.dataSource.driver>

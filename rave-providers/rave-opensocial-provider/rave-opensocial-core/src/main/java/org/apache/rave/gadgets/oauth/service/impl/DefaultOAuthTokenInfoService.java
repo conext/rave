@@ -51,6 +51,7 @@ public class DefaultOAuthTokenInfoService implements OAuthTokenInfoService {
      * {@inheritDoc}
      */
     @Override
+    @Transactional
     public OAuthTokenInfo saveOAuthTokenInfo(OAuthTokenInfo tokenInfo) {
         return repository.save(tokenInfo);
     }

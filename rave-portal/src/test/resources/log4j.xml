@@ -32,13 +32,18 @@
 
   <!-- Springframework logger -->
   <logger name="org.springframework">
-    <level value="info" />
+    <level value="debug" />
   </logger>
 
   <!-- Rave logger -->
   <logger name="org.apache.rave">
     <level value="debug" />
   </logger>
+
+    <!-- Rave logger -->
+    <logger name="com.mysql.jdbc">
+        <level value="debug" />
+    </logger>
   
   <!-- Root Logger -->
   <root>
