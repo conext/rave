@@ -40,3 +40,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.2/handlebars.min.js"></script>
 <%-- google code css3 mediaqueries script --%>
 <!--[if lt IE 9]><script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+
+<script lang="javascript">
+    var foo = function() {
+        var e = document.getElementById("groupSelector");
+        var elements = document.getElementsByClassName('widget');
+        for (var i=0;i<elements.length;i++) {
+            var iframe = elements[i].firstChild.contentWindow;
+            iframe.postMessage(e.options[e.selectedIndex].value, "http://portaldev.cloud.jiscadvance.biz");
+        }
+    };
+    $('#groupSelector').change(function() {
+        foo();
+    });
+    window.addEventListener("message", function(e){
+        foo();
+    }, false);
+</script>

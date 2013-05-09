@@ -19,19 +19,33 @@
 
 package org.apache.rave.portal.web.controller.util;
 
-import javax.servlet.http.HttpServletRequest;
-
+import nl.surfnet.coin.api.client.domain.Group20;
+import nl.surfnet.coin.api.client.domain.Group20Entry;
+import nl.surfnet.coin.api.client.internal.OpenConextApi10aTwoLegged;
 import org.apache.rave.model.User;
 import org.apache.rave.portal.web.model.NavigationItem;
 import org.apache.rave.portal.web.model.NavigationMenu;
 import org.apache.rave.portal.web.util.ViewNames;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.scribe.builder.ServiceBuilder;
+import org.scribe.model.*;
+import org.scribe.oauth.OAuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.util.List;
+
 public class ControllerUtils {
     private static final Logger log = LoggerFactory.getLogger(ControllerUtils.class);
+
+    private static String oauthKey = "https://rave.dev.surfconext.nl/asdf";
+    private static String oauthSecret = "mysecret";
+    private static String apiLocation = "https://api.jacson.jiscadvance.biz/v1/";
+
 
     /**
      * Utility function to determine if this HttpServletRequest
@@ -81,6 +95,9 @@ public class ControllerUtils {
             }
             NavigationItem admin = getAdminItem(referringPageId);
             menu.addNavigationItem(admin);
+
+            NavigationItem groupsItem = getGroupsItem(user);
+            menu.addNavigationItem(groupsItem);
 
             NavigationItem logout = getLogoutItem();
             menu.addNavigationItem(logout);
@@ -156,5 +173,48 @@ public class ControllerUtils {
 
     private static NavigationItem getLogoutItem() {
         return new NavigationItem("page.general.logout", null, "/j_spring_security_logout");
+    }
+
+    private static NavigationItem getGroupsItem(User user) {
+        NavigationItem groups = new NavigationItem();
+        groups.setName("groups");
+        List<Group20> group20List = getGroups(user);
+        for (Group20 group20 : group20List) {
+            NavigationItem groupItem = new NavigationItem();
+            groupItem.setNameParam(group20.getTitle());
+            groupItem.setName(group20.getId());
+            groups.addChildNavigationItem(groupItem);
+        }
+        return groups;
+    }
+
+    private static List<Group20> getGroups(User user) {
+
+        OAuthService service = new ServiceBuilder()
+                .provider(new OpenConextApi10aTwoLegged())
+                .apiKey(oauthKey)
+                .apiSecret(oauthSecret)
+                .scope("read")
+                .callback("oob")
+                .signatureType(SignatureType.QueryString)
+                .debug()
+                .build();
+
+        OAuthRequest req = new OAuthRequest(Verb.GET, apiLocation + "social/rest/groups/" + user.getUsername());
+        service.signRequest(new Token("", ""), req);
+        Response response = req.send();
+
+        final String bodyText = response.getBody();
+
+        ObjectMapper om = new ObjectMapper();
+        Group20Entry group20Entry1 = null;
+        try {
+            group20Entry1 = om.readValue(bodyText, Group20Entry.class);
+        } catch (IOException e) {
+            group20Entry1 = new Group20Entry();
+        }
+
+        return group20Entry1.getEntry();
+
     }
 }
