@@ -1,5 +1,6 @@
 package org.apache.rave.opensocial.service.impl;
 
+import com.google.caja.util.Lists;
 import nl.surfnet.coin.api.client.domain.Group20;
 import nl.surfnet.coin.api.client.domain.Group20Entry;
 import org.apache.http.auth.AuthScope;
@@ -24,6 +25,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -167,7 +169,6 @@ public class JacsonResourceService implements ResourceService {
         final String bodyText = response.getBody();
         logger.debug("Response body: {}", bodyText);
 
-
         ObjectMapper om = new ObjectMapper();
         Group20Entry group20Entry1 = null;
         try {
@@ -203,6 +204,7 @@ public class JacsonResourceService implements ResourceService {
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.setAcceptCharset(Lists.newArrayList(Charset.forName("utf-8")));
 
             HttpEntity httpEntity = new HttpEntity<String>(resourceObj, headers);
 
@@ -236,7 +238,6 @@ public class JacsonResourceService implements ResourceService {
         } else {
             return null;
         }
-
     }
 
     @Override
