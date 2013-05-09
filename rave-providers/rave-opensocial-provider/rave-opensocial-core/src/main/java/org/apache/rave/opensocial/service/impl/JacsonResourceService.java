@@ -19,9 +19,7 @@ import org.scribe.oauth.OAuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Required;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -111,7 +109,7 @@ public class JacsonResourceService implements ResourceService {
             HttpComponentsClientHttpRequestFactory factory =  new HttpComponentsClientHttpRequestFactory(client);
 
             this.restTemplate = new RestTemplate(factory);
-            this.restTemplate.setErrorHandler(new RegrouperErrorHandler());
+            this.restTemplate.setErrorHandler(new RegrouperErrorHandler(200));
 
             Map<String, String> vars = Collections.singletonMap(REGROUP_PARAM, requestedGroupId);
             String rsp = restTemplate.getForObject(regrouperApiLocation, String.class, vars);
@@ -203,7 +201,10 @@ public class JacsonResourceService implements ResourceService {
             this.restTemplate = new RestTemplate(factory);
             this.restTemplate.setErrorHandler(new RegrouperErrorHandler(201));
 
-            HttpEntity httpEntity = new HttpEntity<String>(resourceObj);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            HttpEntity httpEntity = new HttpEntity<String>(resourceObj, headers);
 
             Map<String, String> vars = Collections.singletonMap(REGROUP_PARAM, requestedGroupId);
             ResponseEntity<String> responseEntity =
@@ -297,7 +298,10 @@ public class JacsonResourceService implements ResourceService {
             this.restTemplate = new RestTemplate(factory);
             this.restTemplate.setErrorHandler(new RegrouperErrorHandler(200));
 
-            HttpEntity httpEntity = new HttpEntity<String>(resourceId);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            HttpEntity httpEntity = new HttpEntity<String>(resourceId, headers);
 
             Map<String, String> vars = Collections.singletonMap(REGROUP_PARAM, requestedGroupId);
             ResponseEntity<String> responseEntity =
