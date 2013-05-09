@@ -85,16 +85,18 @@
             </div>
         </div>
     </div>
-    <div class="logo-wrapper"></div>
-    <c:forEach items="${topnav.navigationItems}" var="navItem">
-        <c:choose>
-            <c:when test="${navItem.name=='groups'}">
-                <select id="groupSelector">
-                    <c:forEach items="${navItem.childNavigationItems}" var="childItem">
-                        <option value="${childItem.name}">${childItem.nameParam}</option>
-                    </c:forEach>
-                </select>
-            </c:when>
-        </c:choose>
-    </c:forEach>
+    <div class="logo-wrapper">
+        <c:forEach items="${topnav.navigationItems}" var="navItem">
+            <c:choose>
+                <c:when test="${navItem.name=='groups'}">
+                    <select id="groupSelector">
+                        <c:forEach items="${navItem.childNavigationItems}" var="childItem">
+                            <option value="${childItem.name}">${childItem.nameParam}</option>
+                        </c:forEach>
+                    </select>
+                </c:when>
+            </c:choose>
+        </c:forEach>
+    </div>
+
 </c:if>
