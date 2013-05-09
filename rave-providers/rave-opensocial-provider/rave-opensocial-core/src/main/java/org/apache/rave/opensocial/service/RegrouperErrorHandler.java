@@ -14,9 +14,15 @@ public class RegrouperErrorHandler implements ResponseErrorHandler {
 
     public static final Logger logger = LoggerFactory.getLogger(RegrouperErrorHandler.class);
 
+    private int returnCode;
+
+    public RegrouperErrorHandler(int returnCode) {
+        this.returnCode = returnCode;
+    }
+
     @Override
     public boolean hasError(ClientHttpResponse response) throws IOException {
-        return response.getStatusCode().value() != 200;
+        return response.getStatusCode().value() != returnCode;
     }
 
     @Override
