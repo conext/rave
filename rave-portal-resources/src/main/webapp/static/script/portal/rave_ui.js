@@ -650,17 +650,17 @@ _.extend(rave.ui, (function () {
             }
 
             function aboutWidget() {
-                rave.viewWidgetDetail(widgetId, getCurrentPageId());
+                rave.viewWidgetDetail(self.widget.id, getCurrentPageId());
                 return false;
             }
 
             function commentOnWidget() {
-                rave.viewWidgetDetail(widgetId, getCurrentPageId(), 'widgetComments');
+                rave.viewWidgetDetail(self.widget.id, getCurrentPageId(), 'widgetComments');
                 return false;
             }
 
             function rateWidget() {
-                rave.viewWidgetDetail(widgetId, getCurrentPageId(), 'widgetRatings');
+                rave.viewWidgetDetail(self.widget.id, getCurrentPageId(), 'widgetRatings');
                 return false;
             }
 
