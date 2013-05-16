@@ -63,7 +63,6 @@ public class PageController {
         return ViewNames.LOGIN_PAGE;
     }
 
-
     @RequestMapping(value = {"/page/view", "/index.html"}, method = RequestMethod.GET)
     public String viewDefault(Model model, HttpServletRequest request) {
         List<Page> pages = getAllPagesForAuthenticatedUser();
@@ -77,6 +76,25 @@ public class PageController {
         }
         List<PageLayout> pageLayouts = pageLayoutService.getAllUserSelectable();
         addAttributesToModel(model, page, currentPageUser, pages, pageLayouts);
+        String view = ControllerUtils.getDeviceAppropriateView(request, ViewNames.getPageView(page.getPageLayout().getCode()), ViewNames.MOBILE_HOME);
+        ControllerUtils.addNavItemsToModel(view, model, page.getId(), userService.getAuthenticatedUser(), currentPageUser.isEditor());
+        return view;
+    }
+
+    @RequestMapping(value = "/page/view/group/{groupId}", method = RequestMethod.GET)
+    public String viewByGroup(@PathVariable String groupId, Model model, HttpServletRequest request) {
+        List<Page> pages = getAllPagesForAuthenticatedUser();
+        Page page = pageService.getDefaultPageFromList(pages);
+        PageUser currentPageUser = null;
+        User thisUser = userService.getAuthenticatedUser();
+        for(PageUser pageUser : page.getMembers()){
+            if(pageUser.getUserId().equals(thisUser.getId())){
+                currentPageUser = pageUser;
+            }
+        }
+        List<PageLayout> pageLayouts = pageLayoutService.getAllUserSelectable();
+        addAttributesToModel(model, page, currentPageUser, pages, pageLayouts);
+        addGroupIdToModel(model, groupId);
         String view = ControllerUtils.getDeviceAppropriateView(request, ViewNames.getPageView(page.getPageLayout().getCode()), ViewNames.MOBILE_HOME);
         ControllerUtils.addNavItemsToModel(view, model, page.getId(), userService.getAuthenticatedUser(), currentPageUser.isEditor());
         return view;
@@ -134,5 +152,9 @@ public class PageController {
         model.addAttribute(ModelKeys.PAGES, pages);
         model.addAttribute(ModelKeys.PAGE_LAYOUTS, pageLayouts);
         model.addAttribute(ModelKeys.PAGE_USER, pageUser);
+    }
+
+    private void addGroupIdToModel(Model model, String groupId) {
+        model.addAttribute(ModelKeys.GROUP_ID, groupId);
     }
 }

@@ -59,5 +59,6 @@ public class ModelKeys {
     public static final String STATIC_CONTENT_CACHE = "staticContentCache";
     public static final String BEFORE_RAVE_INIT_SCRIPT = "beforeRaveInitScript";
     public static final String AFTER_RAVE_INIT_SCRIPT = "afterRaveInitScript";
+    public static final String GROUP_ID = "groupId";
 
 }

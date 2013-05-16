@@ -44,7 +44,7 @@
 <script lang="javascript">
     var publishEvent = function() {
         var e = document.getElementById("groupSelector");
-        if (e.options.length > 0) {
+        if (e.options.length > 1) {
             var elements = document.getElementsByClassName('widget');
             for (var i=0;i<elements.length;i++) {
                 var iframe = elements[i].firstChild.contentWindow;
@@ -53,7 +53,9 @@
         }
     };
     $('#groupSelector').change(function() {
-        publishEvent();
+        var e = document.getElementById("groupSelector");
+        var selected_value = e.options[e.selectedIndex].value;
+        window.location.href = "/page/view/group/" + selected_value;
     });
     window.addEventListener("message", function(e){
         publishEvent();
