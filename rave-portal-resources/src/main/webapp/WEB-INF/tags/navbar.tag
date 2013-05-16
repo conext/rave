@@ -25,9 +25,6 @@
 <script type='text/javascript' >
     window.currentGroup = "";
 </script>
-<script type='text/javascript' >
-    window.currentGroup = "";
-</script>
 <c:if test="${not empty topnav}">
     <div class="navbar">
         <div class="navbar-inner">

@@ -42,18 +42,20 @@
 <!--[if lt IE 9]><script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 
 <script lang="javascript">
-    var foo = function() {
+    var publishEvent = function() {
         var e = document.getElementById("groupSelector");
-        var elements = document.getElementsByClassName('widget');
-        for (var i=0;i<elements.length;i++) {
-            var iframe = elements[i].firstChild.contentWindow;
-            iframe.postMessage(e.options[e.selectedIndex].value, "http://portaldev.cloud.jiscadvance.biz");
+        if (e.options.length > 0) {
+            var elements = document.getElementsByClassName('widget');
+            for (var i=0;i<elements.length;i++) {
+                var iframe = elements[i].firstChild.contentWindow;
+                iframe.postMessage(e.options[e.selectedIndex].value, "http://portaldev.cloud.jiscadvance.biz");
+            }
         }
     };
     $('#groupSelector').change(function() {
-        foo();
+        publishEvent();
     });
     window.addEventListener("message", function(e){
-        foo();
+        publishEvent();
     }, false);
 </script>

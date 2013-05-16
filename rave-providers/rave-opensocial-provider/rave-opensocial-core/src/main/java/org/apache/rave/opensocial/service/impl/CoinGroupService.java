@@ -103,6 +103,7 @@ public class CoinGroupService implements GroupService {
             GroupImpl group = new GroupImpl();
             group.setDescription(group20.getDescription());
             group.setTitle(group20.getTitle());
+            group.setVootMembershipRole(group20.getVoot_membership_role());
             GroupId groupId = new GroupId(GroupId.Type.objectId, group20.getId());
             group.setId(groupId);
             groups.add(group);
