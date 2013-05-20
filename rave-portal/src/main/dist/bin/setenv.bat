@@ -13,4 +13,4 @@ rem distributed under the License is distributed on an "AS IS" BASIS,
 rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 rem See the License for the specific language governing permissions and
 rem limitations under the License.
-set JAVA_OPTS=%JAVA_OPTS% -Xmx1024m -XX:MaxPermSize=256m -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties" -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
+set CATALINA_OPTS=%CATALINA_OPTS% -Xmx1024m -XX:MaxPermSize=256m -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties" -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012

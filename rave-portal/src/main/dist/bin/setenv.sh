@@ -15,4 +15,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export JAVA_OPTS="-Xmx1024m -XX:MaxPermSize=256m -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012 -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties""
+export CATALINA_OPTS="-Xmx1024m -XX:MaxPermSize=256m -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012 -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties""
