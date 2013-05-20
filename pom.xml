@@ -362,6 +362,11 @@
                 <version>${scribe.version}</version>
             </dependency>
             <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
+            </dependency>
+            <dependency>
                 <groupId>org.surfnet.coin</groupId>
                 <artifactId>coin-api-client</artifactId>
                 <version>${coin-api.version}</version>
