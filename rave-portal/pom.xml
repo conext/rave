@@ -289,17 +289,30 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.jelastic</groupId>
-                <artifactId>jelastic-maven-plugin</artifactId>
-                <version>1.7-SNAPSHOT</version>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <email>deployment@cloudidentity.co.uk</email>
-                    <password>xLCSeiXskB</password>
-                    <context>portal</context>
-                    <environment>conext-portal</environment>
-                    <comment>Conext Portal</comment>
-
-                    <api_hoster>app.appengine.flow.ch</api_hoster>
+                    <includes>
+                        <include>rave-portal/src/resources/setenv.**</include>
+                    </includes>
+                    <outputDir>
+                        rave-portal/src/main/dist/bin/
+                    </outputDir>
+                    <preserveDir>false</preserveDir>
+                    <replacements>
+                        <replacement>
+                            <token>PROPERTIES_PROFILE</token>
+                            <value>${buildProfileName}</value>
+                        </replacement>
+                    </replacements>
                 </configuration>
             </plugin>
         </plugins>
