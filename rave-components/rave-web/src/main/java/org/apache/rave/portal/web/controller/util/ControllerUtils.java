@@ -188,7 +188,7 @@ public class ControllerUtils {
         return groups;
     }
 
-    private static List<Group20> getGroups(User user) {
+    public static List<Group20> getGroups(User user) {
 
         OAuthService service = new ServiceBuilder()
                 .provider(new OpenConextApi10aTwoLegged())

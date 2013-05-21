@@ -18,6 +18,7 @@
  */
 package org.apache.rave.portal.web.controller;
 
+import nl.surfnet.coin.api.client.domain.Group20;
 import org.apache.rave.model.*;
 import org.apache.rave.portal.service.PageLayoutService;
 import org.apache.rave.portal.service.PageService;
@@ -35,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +47,9 @@ import java.util.List;
  */
 @Controller
 public class PageController {
+
+    private static final String GROUP_CONTEXT = "GROUPCONTEXT";
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private PageService pageService;
@@ -81,12 +86,29 @@ public class PageController {
         return view;
     }
 
-    @RequestMapping(value = "/page/view/group/{groupId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/page/view/group/{groupId:.+}", method = RequestMethod.GET)
     public String viewByGroup(@PathVariable String groupId, Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String groupContext = (String) session.getAttribute(GROUP_CONTEXT);
+        logger.debug("Previous group: " + groupContext);
+        session.setAttribute(GROUP_CONTEXT, groupId);
+        logger.debug("New group: " + groupId);
+        User thisUser = userService.getAuthenticatedUser();
+        List<Group20> group20List = ControllerUtils.getGroups(thisUser);
+        boolean isAuthorized = false;
+        for (Group20 group20 : group20List) {
+            if (group20.getId().equals(groupId)) {
+                isAuthorized = true;
+                break;
+            }
+        }
+        if (!isAuthorized) {
+            logger.debug("Unauthorized.");
+        }
         List<Page> pages = getAllPagesForAuthenticatedUser();
         Page page = pageService.getDefaultPageFromList(pages);
         PageUser currentPageUser = null;
-        User thisUser = userService.getAuthenticatedUser();
+
         for(PageUser pageUser : page.getMembers()){
             if(pageUser.getUserId().equals(thisUser.getId())){
                 currentPageUser = pageUser;

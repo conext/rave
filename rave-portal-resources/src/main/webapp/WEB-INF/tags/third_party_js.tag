@@ -27,6 +27,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <%-- jquery scripts --%>
 <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.2.min.js"></script>
+<script src="http://urldecoderonline.com/js/jquery.urldecoder.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.17/jquery-ui.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
@@ -54,8 +55,12 @@
     };
     $('#groupSelector').change(function() {
         var e = document.getElementById("groupSelector");
-        var selected_value = e.options[e.selectedIndex].value;
-        window.location.href = "/page/view/group/" + selected_value;
+        if (e.selectedIndex > 0) {
+            var selected_value = e.options[e.selectedIndex].value;
+            window.location.href = "/portal/app/page/view/group/" + encodeURI(selected_value);
+        } else {
+            window.location.href = "/portal/";
+        }
     });
     window.addEventListener("message", function(e){
         publishEvent();
