@@ -239,6 +239,16 @@
                                 <todir>conf/</todir>
                                 <tofile>tomcat-users.xml</tofile>
                             </configfile>
+                            <configfile>
+                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/bin/catalina.sh</file>
+                                <todir>bin/</todir>
+                                <tofile>catalina.sh</tofile>
+                            </configfile>
+                            <configfile>
+                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/conf/server.xml</file>
+                                <todir>conf/</todir>
+                                <tofile>server.xml</tofile>
+                            </configfile>
                         </configfiles>
                     </configuration>
                     <container>
@@ -286,33 +296,6 @@
                             </dependency>
                         </dependencies>
                     </container>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <includes>
-                        <include>rave-portal/src/resources/setenv.**</include>
-                    </includes>
-                    <outputDir>
-                        rave-portal/src/main/dist/bin/
-                    </outputDir>
-                    <preserveDir>false</preserveDir>
-                    <replacements>
-                        <replacement>
-                            <token>PROPERTIES_PROFILE</token>
-                            <value>${buildProfileName}</value>
-                        </replacement>
-                    </replacements>
                 </configuration>
             </plugin>
         </plugins>
