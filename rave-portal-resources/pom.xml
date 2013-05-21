@@ -114,12 +114,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <basedir>rave-portal-resources/src/main/resources/</basedir>
+                    <basedir>./rave-portal-resources/src/main/resources/</basedir>
                     <includes>
-                        <include>/bin/catalina.**</include>
-                        <include>/conf/server.**</include>
+                        <include>bin/catalina.**</include>
+                        <include>conf/server.**</include>
                     </includes>
-                    <outputBasedir>rave-portal-resources/</outputBasedir>
+                    <outputBasedir>./rave-portal-resources</outputBasedir>
                     <outputDir>
                         src/main/dist/
                     </outputDir>
