@@ -17,7 +17,8 @@
   specific language governing permissions and limitations
   under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -31,6 +32,14 @@
     <name>Apache Rave :: rave-portal-resources</name>
     <description>Apache Rave Portal Resources</description>
     <packaging>war</packaging>
+
+
+    <properties>
+        <build-type>ci</build-type>
+        <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
+        </remote.debug.conf>
+        <conext.port>8080</conext.port>
+    </properties>
 
     <!--
      The dependencies defined here should have the scope provided.
@@ -94,6 +103,44 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <basedir>./rave-portal-resources/src/main/resources/</basedir>
+                    <includes>
+                        <include>bin/catalina.**</include>
+                        <include>conf/server.**</include>
+                    </includes>
+                    <outputBasedir>./rave-portal-resources</outputBasedir>
+                    <outputDir>
+                        src/main/dist/
+                    </outputDir>
+                    <preserveDir>true</preserveDir>
+                    <replacements>
+                        <replacement>
+                            <token>PROPERTIES_PROFILE</token>
+                            <value>${build-type}</value>
+                        </replacement>
+                        <replacement>
+                            <token>DEBUG_CONFIG</token>
+                            <value>${remote.debug.conf}</value>
+                        </replacement>
+                        <replacement>
+                            <token>CONEXT_PORT</token>
+                            <value>${conext.port}</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.googlecode.mavenfilesync</groupId>
                 <artifactId>maven-filesync-plugin</artifactId>
                 <configuration>
@@ -104,7 +151,8 @@
                         </mapping>
                         <mapping>
                             <sourceFolder>src/main/resources</sourceFolder>
-                            <destinationFolder>@../rave-portal/target/tomcat6x/webapps/portal/WEB-INF/classes</destinationFolder>
+                            <destinationFolder>@../rave-portal/target/tomcat6x/webapps/portal/WEB-INF/classes
+                            </destinationFolder>
                         </mapping>
                     </mappings>
                 </configuration>
@@ -168,12 +216,15 @@
                     <!-- minimize instructs the processors to handle their minimization work -->
                     <minimize>true</minimize>
                     <!-- location of the javascript after processing -->
-                    <jsDestinationFolder>${project.build.directory}/${project.build.finalName}/static/script/</jsDestinationFolder>
+                    <jsDestinationFolder>${project.build.directory}/${project.build.finalName}/static/script/
+                    </jsDestinationFolder>
                     <!-- location of the CSS after processing -->
-                    <cssDestinationFolder>${project.build.directory}/${project.build.finalName}/static/css/</cssDestinationFolder>
+                    <cssDestinationFolder>${project.build.directory}/${project.build.finalName}/static/css/
+                    </cssDestinationFolder>
                     <!-- location of webapp directory that wro4j uses for its location context -->
                     <contextFolder>${basedir}/src/main/webapp/</contextFolder>
-                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+                    <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory
+                    </wroManagerFactory>
                     <ignoreMissingResources>false</ignoreMissingResources>
                 </configuration>
             </plugin>
@@ -230,6 +281,23 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>dev-server</id>
+            <properties>
+                <build-type>ci</build-type>
+                <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
+                </remote.debug.conf>
+                <conext.port>8080</conext.port>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging-server</id>
+            <properties>
+                <build-type>staging</build-type>
+                <remote.debug.conf></remote.debug.conf>
+                <conext.port>8081</conext.port>
+            </properties>
         </profile>
     </profiles>
 </project>

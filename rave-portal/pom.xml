@@ -239,6 +239,16 @@
                                 <todir>conf/</todir>
                                 <tofile>tomcat-users.xml</tofile>
                             </configfile>
+                            <configfile>
+                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/bin/catalina.sh</file>
+                                <todir>bin/</todir>
+                                <tofile>catalina.sh</tofile>
+                            </configfile>
+                            <configfile>
+                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/conf/server.xml</file>
+                                <todir>conf/</todir>
+                                <tofile>server.xml</tofile>
+                            </configfile>
                         </configfiles>
                     </configuration>
                     <container>
@@ -286,20 +296,6 @@
                             </dependency>
                         </dependencies>
                     </container>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.jelastic</groupId>
-                <artifactId>jelastic-maven-plugin</artifactId>
-                <version>1.7-SNAPSHOT</version>
-                <configuration>
-                    <email>deployment@cloudidentity.co.uk</email>
-                    <password>xLCSeiXskB</password>
-                    <context>portal</context>
-                    <environment>conext-portal</environment>
-                    <comment>Conext Portal</comment>
-
-                    <api_hoster>app.appengine.flow.ch</api_hoster>
                 </configuration>
             </plugin>
         </plugins>

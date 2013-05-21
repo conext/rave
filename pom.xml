@@ -116,6 +116,7 @@
         <javaagent/>
         <maven-war-plugin.version>2.3</maven-war-plugin.version>
         <joda-time-version>2.0</joda-time-version>
+        <file-replacer-plugin.version>1.5.2</file-replacer-plugin.version>
     </properties>
 
     <repositories>
@@ -360,6 +361,11 @@
                 <groupId>org.scribe</groupId>
                 <artifactId>scribe</artifactId>
                 <version>${scribe.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>1</version>
             </dependency>
             <dependency>
                 <groupId>org.surfnet.coin</groupId>
@@ -701,6 +707,11 @@
                         <source>1.6</source>
                         <target>1.6</target>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.code.maven-replacer-plugin</groupId>
+                    <artifactId>replacer</artifactId>
+                    <version>${file-replacer-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
