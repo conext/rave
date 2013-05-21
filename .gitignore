@@ -5,7 +5,6 @@
 *.pydevproject
 .project
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -143,11 +142,9 @@ Desktop.ini
 # Packages
 *.egg
 *.egg-info
-dist
 build
 eggs
 parts
-bin
 var
 sdist
 develop-eggs
