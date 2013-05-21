@@ -286,8 +286,7 @@
             <id>dev-server</id>
             <properties>
                 <build-type>ci</build-type>
-                <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
-                </remote.debug.conf>
+                <remote.debug.conf></remote.debug.conf>
                 <conext.port>8080</conext.port>
             </properties>
         </profile>
