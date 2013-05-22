@@ -43,16 +43,17 @@
 <!--[if lt IE 9]><script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 
 <script lang="javascript">
+
     var publishEvent = function() {
-        var e = document.getElementById("groupSelector");
-        if (e.options.length > 1) {
-            var elements = document.getElementsByClassName('widget');
-            for (var i=0;i<elements.length;i++) {
-                var iframe = elements[i].firstChild.contentWindow;
-                iframe.postMessage(e.options[e.selectedIndex].value, "http://portaldev.cloud.jiscadvance.biz");
-            }
+
+        var currentGroup = "${GROUP_CONTEXT}";
+        var elements = document.getElementsByClassName('widget');
+        for (var i=0;i<elements.length;i++) {
+            var iframe = elements[i].firstChild.contentWindow;
+            iframe.postMessage(currentGroup, "http://portaldev.cloud.jiscadvance.biz");
         }
     };
+
     $('#groupSelector').change(function() {
         var e = document.getElementById("groupSelector");
         if (e.selectedIndex > 0) {
