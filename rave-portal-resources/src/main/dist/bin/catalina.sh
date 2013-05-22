@@ -87,7 +87,7 @@
 # OS specific support.  $var _must_ be set to either true or false.
 
 
-CATALINA_OPTS="-Xmx1024m -XX:MaxPermSize=256m -Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012 -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties""
+CATALINA_OPTS="-Xmx1024m -XX:MaxPermSize=256m  -Dportal.override.properties="classpath:staging-portal.properties" -Drave-shindig.override.properties="classpath:staging-rave.shindig.properties""
 
 cygwin=false
 os400=false

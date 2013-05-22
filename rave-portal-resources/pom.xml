@@ -117,7 +117,6 @@
                     <basedir>./rave-portal-resources/src/main/resources/</basedir>
                     <includes>
                         <include>bin/catalina.**</include>
-                        <include>conf/server.**</include>
                     </includes>
                     <outputBasedir>./rave-portal-resources</outputBasedir>
                     <outputDir>
@@ -132,10 +131,6 @@
                         <replacement>
                             <token>DEBUG_CONFIG</token>
                             <value>${remote.debug.conf}</value>
-                        </replacement>
-                        <replacement>
-                            <token>CONEXT_PORT</token>
-                            <value>${conext.port}</value>
                         </replacement>
                     </replacements>
                 </configuration>
@@ -286,8 +281,8 @@
             <id>dev-server</id>
             <properties>
                 <build-type>ci</build-type>
-                <remote.debug.conf></remote.debug.conf>
-                <conext.port>8080</conext.port>
+                <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
+                </remote.debug.conf>
             </properties>
         </profile>
         <profile>
@@ -295,7 +290,6 @@
             <properties>
                 <build-type>staging</build-type>
                 <remote.debug.conf></remote.debug.conf>
-                <conext.port>8081</conext.port>
             </properties>
         </profile>
     </profiles>

@@ -36,6 +36,7 @@
         <!-- if you want a remote debugging on a different a address
   override on command line with -Dcargo.debug.addres=xxxx -->
         <cargo.debug.address>8000</cargo.debug.address>
+        <conext.port>8081</conext.port>
         <!-- if you want to start remote debugging session suspended
   override on command line with -Dcargo.debug.suspend=y -->
         <cargo.debug.suspend>n</cargo.debug.suspend>
@@ -230,7 +231,7 @@
                                     <![CDATA[-Dh2.bindAddress="localhost" -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties" -Xdebug -XX:MaxPermSize=256m -Xrunjdwp:transport=dt_socket,address=${cargo.debug.address},server=y,suspend=${cargo.debug.suspend} -noverify ${javaagent} ${cargo.args}]]>
                             </cargo.jvmargs>
                             <cargo.tomcat.context.reloadable>true</cargo.tomcat.context.reloadable>
-                            <cargo.servlet.port>8080</cargo.servlet.port>
+                            <cargo.servlet.port>${conext.port}</cargo.servlet.port>
                         </properties>
                         <home>${project.build.directory}/tomcat6x</home>
                         <configfiles>
@@ -243,11 +244,6 @@
                                 <file>${project.basedir}/../rave-portal-resources/src/main/dist/bin/catalina.sh</file>
                                 <todir>bin/</todir>
                                 <tofile>catalina.sh</tofile>
-                            </configfile>
-                            <configfile>
-                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/conf/server.xml</file>
-                                <todir>conf/</todir>
-                                <tofile>server.xml</tofile>
                             </configfile>
                         </configfiles>
                     </configuration>
@@ -430,6 +426,18 @@
                     </plugins>
                 </build>
             </profile>
+        <profile>
+            <id>dev-server</id>
+            <properties>
+                <conext.port>8080</conext.port>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging-server</id>
+            <properties>
+                <conext.port>8081</conext.port>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
