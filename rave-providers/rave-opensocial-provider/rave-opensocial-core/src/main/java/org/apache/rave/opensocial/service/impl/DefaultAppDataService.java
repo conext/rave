@@ -19,6 +19,7 @@
 
 package org.apache.rave.opensocial.service.impl;
 
+import com.google.common.util.concurrent.Futures;
 import org.apache.commons.lang.StringUtils;
 import org.apache.rave.model.ApplicationData;
 import org.apache.rave.portal.model.impl.ApplicationDataImpl;
@@ -27,7 +28,6 @@ import org.apache.rave.opensocial.service.SimplePersonService;
 import org.apache.rave.model.Person;
 import org.apache.rave.service.LockService;
 import org.apache.shindig.auth.SecurityToken;
-import org.apache.shindig.common.util.ImmediateFuture;
 import org.apache.shindig.protocol.DataCollection;
 import org.apache.shindig.protocol.ProtocolException;
 import org.apache.shindig.social.opensocial.spi.AppDataService;
@@ -85,7 +85,7 @@ public class DefaultAppDataService implements AppDataService {
         //fetch their appdata, convert it to a DataCollection and return it
         List<ApplicationData> applicationData = applicationDataRepository.getApplicationData(personIds, appId);
         DataCollection dataCollection = convertAppDataMapToDataCollection(personIds, applicationData, fields);
-        return ImmediateFuture.newInstance(dataCollection);
+        return Futures.immediateFuture(dataCollection);
     }
 
     /**
@@ -114,7 +114,7 @@ public class DefaultAppDataService implements AppDataService {
 
             //if there is no data, there's nothing to delete, so we're done...
             if (applicationData == null || applicationData.getData() == null) {
-                return ImmediateFuture.newInstance(null);
+                return Futures.immediateFuture(null);
             }
 
             //remove the fields specified -- empty field set implies remove all, otherwise remove just the fields specified
@@ -131,7 +131,7 @@ public class DefaultAppDataService implements AppDataService {
             lock.unlock();
             lockService.returnLock(lock);
         }
-        return ImmediateFuture.newInstance(null);
+        return Futures.immediateFuture(null);
     }
 
     /**
@@ -197,7 +197,7 @@ public class DefaultAppDataService implements AppDataService {
             lock.unlock();
             lockService.returnLock(lock);
         }
-        return ImmediateFuture.newInstance(null);
+        return Futures.immediateFuture(null);
     }
 
     private List<String> validateReadRequest(Set<UserId> userIds, GroupId groupId, String appId, SecurityToken token) {
