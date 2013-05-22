@@ -37,6 +37,7 @@
   override on command line with -Dcargo.debug.addres=xxxx -->
         <cargo.debug.address>8000</cargo.debug.address>
         <conext.port>8081</conext.port>
+        <conext.ajp.port>8009</conext.ajp.port>
         <!-- if you want to start remote debugging session suspended
   override on command line with -Dcargo.debug.suspend=y -->
         <cargo.debug.suspend>n</cargo.debug.suspend>
@@ -232,6 +233,7 @@
                             </cargo.jvmargs>
                             <cargo.tomcat.context.reloadable>true</cargo.tomcat.context.reloadable>
                             <cargo.servlet.port>${conext.port}</cargo.servlet.port>
+                            <cargo.tomcat.ajp.port>${conext.ajp.port}</cargo.tomcat.ajp.port>
                         </properties>
                         <home>${project.build.directory}/tomcat6x</home>
                         <configfiles>
@@ -433,12 +435,14 @@
             </activation>
             <properties>
                 <conext.port>8080</conext.port>
+                <conext.ajp.port>8009</conext.ajp.port>
             </properties>
         </profile>
         <profile>
             <id>staging-server</id>
             <properties>
                 <conext.port>8081</conext.port>
+                <conext.ajp.port>8019</conext.ajp.port>
             </properties>
         </profile>
     </profiles>
