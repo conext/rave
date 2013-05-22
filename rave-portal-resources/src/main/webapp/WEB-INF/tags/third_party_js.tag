@@ -21,6 +21,7 @@
      Overlay this file in custom extensions of Rave if you host these libraries internally and don't need
      to pull them in externally.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- json script --%>
 <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
 <%-- underscore --%>
@@ -44,11 +45,11 @@
 
 <script lang="javascript">
 
-    var currentGroup = "${GROUP_CONTEXT}";
+    var currentGroup = '<c:out value="${GROUPCONTEXT}"/>';
 
     var e = document.getElementById("groupSelector");
-    for(var i = 0, j = sel.options.length; i < j; ++i) {
-        if(e.options[i].value === val) {
+    for(var i = 0, j = e.options.length; i < j; ++i) {
+        if(e.options[i].value === currentGroup) {
             e.selectedIndex = i;
             break;
         }
@@ -66,7 +67,7 @@
     $('#groupSelector').change(function() {
         if (e.selectedIndex > 0) {
             var selected_value = e.options[e.selectedIndex].value;
-            window.location.href = "/portal/app/page/view/group/" + encodeURI(selected_value);
+            window.location.href = "/portal/app/page/view/group/" + encodeURIComponent(selected_value);
         } else {
             window.location.href = "/portal/";
         }
@@ -75,3 +76,4 @@
         publishEvent();
     }, false);
 </script>
+
