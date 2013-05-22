@@ -17,19 +17,36 @@
  * under the License.
  */
 
-package org.apache.rave.portal.repository;
+package org.apache.rave.portal.model;
 
-import org.apache.rave.repository.Repository;
-import org.apache.rave.model.PortalPreference;
 
-import java.util.List;
+import com.google.common.collect.Maps;
+import org.apache.rave.portal.model.impl.ActivityStreamsMediaLinkImpl;
 
-/**
- * Provides persistence operations for the {@link org.apache.rave.model.PortalPreference}
- */
-public interface PortalPreferenceRepository extends Repository<PortalPreference> {
+import java.util.HashMap;
+import java.util.Map;
 
-    List<PortalPreference> getAll();
+public class MongoDbActivityStreamsMediaLink extends ActivityStreamsMediaLinkImpl {
 
-    PortalPreference getByKey(String key);
+    private HashMap openSocial;
+
+    @Override
+    public HashMap getOpenSocial() {
+        return openSocial;
+    }
+
+    @Override
+    public void setOpenSocial(Map openSocial) {
+        this.openSocial = convertToHashMap(openSocial);
+    }
+
+
+    private HashMap convertToHashMap(Map extensions) {
+        HashMap converted = null;
+        if(extensions != null) {
+            converted= Maps.newHashMap();
+            converted.putAll(extensions);
+        }
+        return converted;
+    }
 }

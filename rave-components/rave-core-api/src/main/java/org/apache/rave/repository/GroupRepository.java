@@ -16,20 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+package org.apache.rave.repository;
 
-package org.apache.rave.portal.repository;
-
-import org.apache.rave.repository.Repository;
-import org.apache.rave.model.PortalPreference;
+import org.apache.rave.model.Group;
 
 import java.util.List;
 
-/**
- * Provides persistence operations for the {@link org.apache.rave.model.PortalPreference}
- */
-public interface PortalPreferenceRepository extends Repository<PortalPreference> {
+public interface GroupRepository extends Repository<Group> {
 
-    List<PortalPreference> getAll();
+    Group findByTitle(String title);
 
-    PortalPreference getByKey(String key);
+    List<Group> getAll();
 }

@@ -17,19 +17,19 @@
  * under the License.
  */
 
-package org.apache.rave.portal.repository;
+package org.apache.rave.service;
 
-import org.apache.rave.repository.Repository;
-import org.apache.rave.model.PortalPreference;
+import org.apache.rave.model.Group;
 
 import java.util.List;
 
-/**
- * Provides persistence operations for the {@link org.apache.rave.model.PortalPreference}
- */
-public interface PortalPreferenceRepository extends Repository<PortalPreference> {
+public interface GroupService {
 
-    List<PortalPreference> getAll();
+    Group getGroupByID(String id);
 
-    PortalPreference getByKey(String key);
+    List<Group> getAllGroups();
+
+    Group getGroupByTitle(String title);
+
+    Group save(Group group);
 }
