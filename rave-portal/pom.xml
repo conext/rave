@@ -428,6 +428,9 @@
             </profile>
         <profile>
             <id>dev-server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <conext.port>8080</conext.port>
             </properties>
