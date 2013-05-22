@@ -44,9 +44,18 @@
 
 <script lang="javascript">
 
+    var currentGroup = "${GROUP_CONTEXT}";
+
+    var e = document.getElementById("groupSelector");
+    for(var i = 0, j = sel.options.length; i < j; ++i) {
+        if(e.options[i].value === val) {
+            e.selectedIndex = i;
+            break;
+        }
+    }
+
     var publishEvent = function() {
 
-        var currentGroup = "${GROUP_CONTEXT}";
         var elements = document.getElementsByClassName('widget');
         for (var i=0;i<elements.length;i++) {
             var iframe = elements[i].firstChild.contentWindow;
@@ -55,7 +64,6 @@
     };
 
     $('#groupSelector').change(function() {
-        var e = document.getElementById("groupSelector");
         if (e.selectedIndex > 0) {
             var selected_value = e.options[e.selectedIndex].value;
             window.location.href = "/portal/app/page/view/group/" + encodeURI(selected_value);
