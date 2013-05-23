@@ -100,41 +100,12 @@
                     <exclude>**/wro.xml</exclude>
                 </excludes>
             </resource>
+            <resource>
+                <directory>src/main/resources/bin</directory>
+                <filtering>true</filtering>
+            </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <basedir>./rave-portal-resources/src/main/resources/</basedir>
-                    <includes>
-                        <include>bin/catalina.**</include>
-                    </includes>
-                    <outputBasedir>./rave-portal-resources</outputBasedir>
-                    <outputDir>
-                        src/main/dist/
-                    </outputDir>
-                    <preserveDir>true</preserveDir>
-                    <replacements>
-                        <replacement>
-                            <token>PROPERTIES_PROFILE</token>
-                            <value>${build-type}</value>
-                        </replacement>
-                        <replacement>
-                            <token>DEBUG_CONFIG</token>
-                            <value>${remote.debug.conf}</value>
-                        </replacement>
-                    </replacements>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>com.googlecode.mavenfilesync</groupId>
                 <artifactId>maven-filesync-plugin</artifactId>
@@ -280,16 +251,20 @@
         <profile>
             <id>dev-server</id>
             <properties>
-                <build-type>ci</build-type>
+                <portal.opensocial_engine.root>http://portaldev.cloud.jiscadvance.biz</portal.opensocial_engine.root>
                 <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
                 </remote.debug.conf>
+                <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
+                <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
             </properties>
         </profile>
         <profile>
             <id>staging-server</id>
             <properties>
-                <build-type>staging</build-type>
+                <portal.opensocial_engine.root>http://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
                 <remote.debug.conf></remote.debug.conf>
+                <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
+                <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
             </properties>
         </profile>
     </profiles>

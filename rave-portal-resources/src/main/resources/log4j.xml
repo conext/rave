@@ -32,19 +32,19 @@
 
     <!-- Springframework logger -->
     <logger name="org.springframework">
-        <level value="warn" />
+        <level value="info" />
     </logger>
 
     <logger name="oorg.springframework.orm.jpa">
-        <level value="debug" />
+        <level value="info" />
     </logger>
 
     <logger name="org.apache.rave">
-        <level value="debug" />
+        <level value="info" />
     </logger>
 
     <logger name="nl.surfnet">
-        <level value="debug" />
+        <level value="info" />
     </logger>
 
     <logger name="org.apache.directory.server">

@@ -62,6 +62,10 @@
                     <artifactId>xml-apis</artifactId>
                     <groupId>xml-apis</groupId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -243,7 +247,7 @@
                                 <tofile>tomcat-users.xml</tofile>
                             </configfile>
                             <configfile>
-                                <file>${project.basedir}/../rave-portal-resources/src/main/dist/bin/catalina.sh</file>
+                                <file>${project.basedir}/../rave-portal-resources/target/rave-portal-resources-${project.version}/WEB-INF/classes/bin/catalina.sh</file>
                                 <todir>bin/</todir>
                                 <tofile>catalina.sh</tofile>
                             </configfile>

@@ -130,6 +130,12 @@
         <dependency>
             <groupId>org.surfnet.coin</groupId>
             <artifactId>coin-api-client</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
