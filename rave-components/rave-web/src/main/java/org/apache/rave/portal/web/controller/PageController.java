@@ -70,6 +70,10 @@ public class PageController {
 
     @RequestMapping(value = {"/page/view", "/index.html"}, method = RequestMethod.GET)
     public String viewDefault(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String groupContext = (String) session.getAttribute(GROUP_CONTEXT);
+        logger.debug("Previous group: " + groupContext);
+        session.removeAttribute(GROUP_CONTEXT);
         List<Page> pages = getAllPagesForAuthenticatedUser();
         Page page = pageService.getDefaultPageFromList(pages);
         PageUser currentPageUser = null;

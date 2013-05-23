@@ -45,14 +45,25 @@
 
 <script lang="javascript">
 
-    var currentGroup = '<c:out value="${GROUPCONTEXT}"/>';
+    <c:choose>
+        <c:when test="${!empty GROUPCONTEXT}" >
+            var currentGroup = '<c:out value="${GROUPCONTEXT}"/>';
+        </c:when>
+        <c:otherwise>
+            var currentGroup = false;
+        </c:otherwise>
+    </c:choose>
 
     var e = document.getElementById("groupSelector");
-    for(var i = 0, j = e.options.length; i < j; ++i) {
-        if(e.options[i].value === currentGroup) {
-            e.selectedIndex = i;
-            break;
+    if (currentGroup) {
+        for(var i = 0, j = e.options.length; i < j; ++i) {
+            if(e.options[i].value === currentGroup) {
+                e.selectedIndex = i;
+                break;
+            }
         }
+    } else {
+        e.selectedIndex = 0;
     }
 
     var publishEvent = function() {
