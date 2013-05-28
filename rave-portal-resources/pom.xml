@@ -194,6 +194,23 @@
                     <ignoreMissingResources>false</ignoreMissingResources>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp/WEB-INF/tags</directory>
+                            <filtering>true</filtering>
+                            <targetPath>WEB-INF/tags</targetPath>
+                            <includes>
+                                <include>**/third_party_js.tag</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -218,13 +235,6 @@
                                         <include>**/*</include>
                                     </includes>
                                 </resource>
-                                <resource>
-                                    <directory>src/main/webapp/WEB-INF/tags</directory>
-                                    <filtering>true</filtering>
-                                    <includes>
-                                        <include>**/third_party_js.tag</include>
-                                    </includes>
-                                </resource>
                             </webResources>
                         </configuration>
                     </plugin>
@@ -238,7 +248,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>${maven-war-plugin.version}</version>
                         <configuration>
                             <webResources>
                                 <resource>
