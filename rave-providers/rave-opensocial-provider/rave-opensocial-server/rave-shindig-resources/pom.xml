@@ -105,6 +105,7 @@
                 <portal.opensocial_engine.root>http://portaldev.cloud.jiscadvance.biz</portal.opensocial_engine.root>
                 <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
                 <portal.opensocial_engine.protocol>http</portal.opensocial_engine.protocol>
+                <portal.port>80</portal.port>
             </properties>
         </profile>
         <profile>
@@ -113,6 +114,7 @@
                 <portal.opensocial_engine.root>https://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
                 <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
+                <portal.port>443</portal.port>
             </properties>
         </profile>
     </profiles>
