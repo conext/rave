@@ -99,7 +99,7 @@
         <!-- all urls must be authenticated -->
         <security:intercept-url pattern="/*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
-        <security:form-login login-page="${ISSUING_ENTITY_ID}/portal/OpenSAML.sso/Login?target=${wayf.url.sso}" default-target-url="/" />
+        <security:form-login login-page="${ISSUING_ENTITY_ID}/portal/OpenSAML.sso/Login?target=${wayf.url.sso}" default-target-url="${ISSUING_ENTITY_ID}/portal/" />
         <security:logout delete-cookies="JSESSIONID" logout-success-url="${ISSUING_ENTITY_ID}/portal/OpenSAML.sso/Login?target=${wayf.url.sso}/logout"/>
 
         <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
