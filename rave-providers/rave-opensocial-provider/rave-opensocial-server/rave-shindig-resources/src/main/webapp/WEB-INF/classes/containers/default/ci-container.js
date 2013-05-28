@@ -172,17 +172,17 @@
   "views" : {
     "profile" : {
       "isOnlyVisible" : false,
-      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:80${CONTEXT_ROOT}/gadgets/profile?{var}",
+      "urlTemplate" : "${portal.opensocial_engine.root}${CONTEXT_ROOT}/gadgets/profile?{var}",
       "aliases": ["DASHBOARD", "default"]
     },
     "canvas" : {
       "isOnlyVisible" : true,
-      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:80${CONTEXT_ROOT}/gadgets/canvas?{var}",
+      "urlTemplate" : "${portal.opensocial_engine.root}${CONTEXT_ROOT}/gadgets/canvas?{var}",
       "aliases" : ["FULL_PAGE"]
     },
     "default" : {
       "isOnlyVisible" : false,
-      "urlTemplate" : "http://portaldev.cloud.jiscadvance.biz:80${CONTEXT_ROOT}/gadgets/default?{var}",
+      "urlTemplate" : "${portal.opensocial_engine.root}${CONTEXT_ROOT}/gadgets/default?{var}",
       "aliases" : ["home", "profile", "canvas"]
     }
   },
@@ -283,9 +283,9 @@
   "opensocial" : {
     // Path to fetch opensocial data from
     // Must be on the same domain as the gadget rendering server
-    "path" : "http://%host%${CONTEXT_ROOT}/rpc",
+    "path" : "${portal.opensocial_engine.protocol}://%host%${CONTEXT_ROOT}/rpc",
     // Path to issue invalidate calls
-    "invalidatePath" : "http://%host%${CONTEXT_ROOT}/rpc",
+    "invalidatePath" : "${portal.opensocial_engine.protocol}://%host%${CONTEXT_ROOT}/rpc",
     "domain" : "shindig",
     "enableCaja" : false,
     "supportedFields" : {

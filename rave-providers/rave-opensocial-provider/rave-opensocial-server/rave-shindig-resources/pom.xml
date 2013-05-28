@@ -80,6 +80,21 @@
                     </mappings>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp/WEB-INF/classes/containers/default</directory>
+                            <includes>
+                                <include>**/ci-container.js</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -89,6 +104,7 @@
             <properties>
                 <portal.opensocial_engine.root>http://portaldev.cloud.jiscadvance.biz</portal.opensocial_engine.root>
                 <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
+                <portal.opensocial_engine.protocol>http</portal.opensocial_engine.protocol>
             </properties>
         </profile>
         <profile>
@@ -96,6 +112,7 @@
             <properties>
                 <portal.opensocial_engine.root>http://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
+                <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
             </properties>
         </profile>
     </profiles>
