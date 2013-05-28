@@ -110,7 +110,7 @@
         <profile>
             <id>staging-server</id>
             <properties>
-                <portal.opensocial_engine.root>http://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
+                <portal.opensocial_engine.root>https://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
                 <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
             </properties>
