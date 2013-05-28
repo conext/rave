@@ -218,6 +218,13 @@
                                         <include>**/*</include>
                                     </includes>
                                 </resource>
+                                <resource>
+                                    <directory>src/main/webapp/WEB-INF/tags</directory>
+                                    <filtering>true</filtering>
+                                    <includes>
+                                        <include>**/third_party_js.tag</include>
+                                    </includes>
+                                </resource>
                             </webResources>
                         </configuration>
                     </plugin>

@@ -71,7 +71,7 @@
         var elements = document.getElementsByClassName('widget');
         for (var i=0;i<elements.length;i++) {
             var iframe = elements[i].firstChild.contentWindow;
-            iframe.postMessage(currentGroup, "http://portaldev.cloud.jiscadvance.biz");
+            iframe.postMessage(currentGroup, "${portal.opensocial_engine.root}");
         }
     };
 
