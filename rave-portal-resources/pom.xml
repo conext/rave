@@ -252,6 +252,7 @@
             <id>dev-server</id>
             <properties>
                 <portal.opensocial_engine.root>http://portaldev.cloud.jiscadvance.biz</portal.opensocial_engine.root>
+                <portal.opensocial_engine.protocol>http</portal.opensocial_engine.protocol>
                 <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
                 </remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
@@ -261,7 +262,8 @@
         <profile>
             <id>staging-server</id>
             <properties>
-                <portal.opensocial_engine.root>http://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
+                <portal.opensocial_engine.root>https://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
+                <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
                 <remote.debug.conf></remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
