@@ -78,8 +78,8 @@
         <security:anonymous/>
 
         <security:intercept-url pattern="/login" access="permitAll"/>
-        <security:intercept-url pattern="/OpenSAML.sso/Login" access="permitAll"/>
-        <security:intercept-url pattern="/OpenSAML.sso/Metadata" access="permitAll"/>
+        <!--<security:intercept-url pattern="/OpenSAML.sso/Login" access="permitAll"/>-->
+        <!--<security:intercept-url pattern="/OpenSAML.sso/Metadata" access="permitAll"/>-->
         <security:intercept-url pattern="/landingpage" access="hasRole('ROLE_USER')"/>
         <security:intercept-url pattern="${ASSERTION_CONSUMER_URI}"
                                 access="hasAnyRole(ROLE_ANONYMOUS,ROLE_ADMIN,ROLE_USER)"/>
@@ -99,8 +99,8 @@
         <!-- all urls must be authenticated -->
         <security:intercept-url pattern="/*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 
-        <security:form-login login-page="/OpenSAML.sso/Login?target=${wayf.url.sso}" default-target-url="/" />
-        <security:logout delete-cookies="JSESSIONID" logout-success-url="/OpenSAML.sso/Login?target=${wayf.url.sso}/logout"/>
+        <security:form-login login-page="${ISSUING_ENTITY_ID}/portal/OpenSAML.sso/Login?target=${wayf.url.sso}" default-target-url="/" />
+        <security:logout delete-cookies="JSESSIONID" logout-success-url="${ISSUING_ENTITY_ID}/portal/OpenSAML.sso/Login?target=${wayf.url.sso}/logout"/>
 
         <security:custom-filter position="PRE_AUTH_FILTER" ref="samlPreAuthFilter" />
     </security:http>
