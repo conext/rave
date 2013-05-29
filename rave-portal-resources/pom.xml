@@ -265,6 +265,9 @@
                 </remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
+                <wayf.url.metadata>https://engine.jacson.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
+                <wayf.url.sso>https://engine.jacson.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
+                <wayf.certificate>=MIIDYzCCAkugAwIBAgIJAOVBPNcsTdLgMA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTIxMDA0MTAxMTEyWhcNMjIxMDA0MTAxMTEyWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAywC71qqd4be2BjFRnn1tCfg+zQHH7wD3AwYE3iLyXa65fYrfwuMVXTPUoyEAZEkjDdrdp5M1lxFEjfa5kqkzScVz4b9fAWZKLPPFjnc9rZgg+SWkExE/Fo5oNw092MqdM4GpwNxYKD4IYEiu1YM34dvsvqZFH/CcK26CSks/vQMwcDPfuprcw4xA/EBH0OwW7nFaTJJ3EjHilrkDblRZRVgm4lLErIUS2u6wUC88uyYH0SlIxYsG5qJkpjEL4bd09sxLFqPZobxTfjU6BDgolqi7cg2MJXXDvOAz5hcvBdkEG59bxSHH8pyuXfQvUBfPFdjyzxhwkZ9vLxaOQvd0KwIDAQABo1AwTjAdBgNVHQ4EFgQUjZbLsyTu6LNRFs2wisIS1T9PkKIwHwYDVR0jBBgwFoAUjZbLsyTu6LNRFs2wisIS1T9PkKIwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAIybyLh8blWnS/aKOONYrNItE/RxNvQ28Ed4twP8ybVD8y3dEMB4j3lpNaYyia8AEEzOmUb8yDLeBgOJ4WPWQI738YJZT3i0CqBH+Cyt1tOYZHqFGYS791dHYGofjetZokkLQT7ftlqpachcc7jMkdAI8a1mB/ED424oYm2s0shMHdDB858uovU1c9EfUPMQM8aeZ2sVOAp2a3buBTb6QsqgDzc4jUQODmfFU4RYsSJ0oS3t2uvVb6j/DAp5JSjQ7vLZqvHD4be40cuU0RLj5Z0nR6vvjOHTRqTN1cvamgcPEniaWCQd3sJ1wXlLloruoxHmHPAKnlqk+toH/x3TW0g==</wayf.certificate>
             </properties>
         </profile>
         <profile>
@@ -275,6 +278,9 @@
                 <remote.debug.conf></remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
+                <wayf.url.metadata>https://engine.jacson.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
+                <wayf.url.sso>https://engine.jacson.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
+                <wayf.certificate>=MIIDYzCCAkugAwIBAgIJAOVBPNcsTdLgMA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTIxMDA0MTAxMTEyWhcNMjIxMDA0MTAxMTEyWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAywC71qqd4be2BjFRnn1tCfg+zQHH7wD3AwYE3iLyXa65fYrfwuMVXTPUoyEAZEkjDdrdp5M1lxFEjfa5kqkzScVz4b9fAWZKLPPFjnc9rZgg+SWkExE/Fo5oNw092MqdM4GpwNxYKD4IYEiu1YM34dvsvqZFH/CcK26CSks/vQMwcDPfuprcw4xA/EBH0OwW7nFaTJJ3EjHilrkDblRZRVgm4lLErIUS2u6wUC88uyYH0SlIxYsG5qJkpjEL4bd09sxLFqPZobxTfjU6BDgolqi7cg2MJXXDvOAz5hcvBdkEG59bxSHH8pyuXfQvUBfPFdjyzxhwkZ9vLxaOQvd0KwIDAQABo1AwTjAdBgNVHQ4EFgQUjZbLsyTu6LNRFs2wisIS1T9PkKIwHwYDVR0jBBgwFoAUjZbLsyTu6LNRFs2wisIS1T9PkKIwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAIybyLh8blWnS/aKOONYrNItE/RxNvQ28Ed4twP8ybVD8y3dEMB4j3lpNaYyia8AEEzOmUb8yDLeBgOJ4WPWQI738YJZT3i0CqBH+Cyt1tOYZHqFGYS791dHYGofjetZokkLQT7ftlqpachcc7jMkdAI8a1mB/ED424oYm2s0shMHdDB858uovU1c9EfUPMQM8aeZ2sVOAp2a3buBTb6QsqgDzc4jUQODmfFU4RYsSJ0oS3t2uvVb6j/DAp5JSjQ7vLZqvHD4be40cuU0RLj5Z0nR6vvjOHTRqTN1cvamgcPEniaWCQd3sJ1wXlLloruoxHmHPAKnlqk+toH/x3TW0g==</wayf.certificate>
             </properties>
         </profile>
     </profiles>
