@@ -47,7 +47,8 @@ public class JacsonResourceService implements ResourceService {
     private String oauthSecret;
     private String apiLocation;
 
-    private static final String REGROUP_PARAM = "groupId";
+    private static final String REGROUP_GROUPID_PARAM = "groupId";
+    private static final String REGROUP_APPID_PARAM = "appId";
 
     private String regrouperApiLocation;
     private String username;
@@ -113,7 +114,9 @@ public class JacsonResourceService implements ResourceService {
             this.restTemplate = new RestTemplate(factory);
             this.restTemplate.setErrorHandler(new RegrouperErrorHandler(200));
 
-            Map<String, String> vars = Collections.singletonMap(REGROUP_PARAM, requestedGroupId);
+            Map<String, String> vars = Collections.emptyMap();
+            vars.put(REGROUP_GROUPID_PARAM, requestedGroupId);
+            vars.put(REGROUP_APPID_PARAM, requestedGroupId);
             String rsp = restTemplate.getForObject(regrouperApiLocation, String.class, vars);
             resourceImpl.setResource(rsp);
 
@@ -208,7 +211,9 @@ public class JacsonResourceService implements ResourceService {
 
             HttpEntity httpEntity = new HttpEntity<String>(resourceObj, headers);
 
-            Map<String, String> vars = Collections.singletonMap(REGROUP_PARAM, requestedGroupId);
+            Map<String, String> vars = Collections.emptyMap();
+            vars.put(REGROUP_GROUPID_PARAM,requestedGroupId);
+            vars.put(REGROUP_APPID_PARAM,token.getAppId());
             ResponseEntity<String> responseEntity =
                     restTemplate.exchange(regrouperApiLocation, HttpMethod.PUT, httpEntity, String.class, vars);
 
@@ -304,7 +309,9 @@ public class JacsonResourceService implements ResourceService {
 
             HttpEntity httpEntity = new HttpEntity<String>(resourceId, headers);
 
-            Map<String, String> vars = Collections.singletonMap(REGROUP_PARAM, requestedGroupId);
+            Map<String, String> vars = Collections.emptyMap();
+            vars.put(REGROUP_GROUPID_PARAM, requestedGroupId);
+            vars.put(REGROUP_APPID_PARAM, token.getAppId());
             ResponseEntity<String> responseEntity =
                     restTemplate.exchange(regrouperApiLocation, HttpMethod.DELETE, httpEntity, String.class, vars);
 
