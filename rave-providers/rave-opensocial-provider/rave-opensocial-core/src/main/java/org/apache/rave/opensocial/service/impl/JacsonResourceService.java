@@ -25,8 +25,11 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -114,9 +117,14 @@ public class JacsonResourceService implements ResourceService {
             this.restTemplate = new RestTemplate(factory);
             this.restTemplate.setErrorHandler(new RegrouperErrorHandler(200));
 
-            Map<String, String> vars = Collections.emptyMap();
+            Map<String, String> vars = new HashMap<String, String>();
             vars.put(REGROUP_GROUPID_PARAM, requestedGroupId);
-            vars.put(REGROUP_APPID_PARAM, requestedGroupId);
+            try {
+                vars.put(REGROUP_APPID_PARAM, URLEncoder.encode(token.getAppId(), "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                //TODO(mmachulak): refactor
+                e.printStackTrace();
+            }
             String rsp = restTemplate.getForObject(regrouperApiLocation, String.class, vars);
             resourceImpl.setResource(rsp);
 
@@ -211,9 +219,14 @@ public class JacsonResourceService implements ResourceService {
 
             HttpEntity httpEntity = new HttpEntity<String>(resourceObj, headers);
 
-            Map<String, String> vars = Collections.emptyMap();
+            Map<String, String> vars = new HashMap<String, String>();
             vars.put(REGROUP_GROUPID_PARAM,requestedGroupId);
-            vars.put(REGROUP_APPID_PARAM,token.getAppId());
+            try {
+                vars.put(REGROUP_APPID_PARAM, URLEncoder.encode(token.getAppId(), "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                //TODO(mmachulak): refactor
+                e.printStackTrace();
+            }
             ResponseEntity<String> responseEntity =
                     restTemplate.exchange(regrouperApiLocation, HttpMethod.PUT, httpEntity, String.class, vars);
 
@@ -309,9 +322,14 @@ public class JacsonResourceService implements ResourceService {
 
             HttpEntity httpEntity = new HttpEntity<String>(resourceId, headers);
 
-            Map<String, String> vars = Collections.emptyMap();
+            Map<String, String> vars = new HashMap<String, String>();
             vars.put(REGROUP_GROUPID_PARAM, requestedGroupId);
-            vars.put(REGROUP_APPID_PARAM, token.getAppId());
+            try {
+                vars.put(REGROUP_APPID_PARAM, URLEncoder.encode(token.getAppId(), "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                //TODO(mmachulak): refactor
+                e.printStackTrace();
+            }
             ResponseEntity<String> responseEntity =
                     restTemplate.exchange(regrouperApiLocation, HttpMethod.DELETE, httpEntity, String.class, vars);
 
