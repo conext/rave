@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400&subset=latin,latin-ext,cyrillic-ext);
+
 html {
     background: #FFFFFF;
 }
@@ -5,7 +7,7 @@ html {
 body {
     background: #FFFFFF;
     color: #787873;
-    font-family: "Lucida Sans Unicode","Lucida Grande",Arial,sans-serif;
+    font-family: "Open Sans", "Lucida Sans Unicode","Lucida Grande",Arial,sans-serif;
 }
 
 /* LOGIN PAGE */

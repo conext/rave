@@ -18,12 +18,14 @@ under the License.
 --%>
 <%-- Common footer --%>
 <%@ include file="/WEB-INF/jsp/includes/taglibs.jsp" %>
-<footer>
+<footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="span12 version">
-                <span>Jacson Portal ${applicationProperties['portal.version']}</span>
-                <a href="http://portaldev.cloud.jiscadvance.biz:8080/portal/"><img class="footer-logo" alt="Conext" title="Conext" src="<c:url value="/static/images/conext.png" />" /></a>
+            <div class="span4">
+                <a href="http://www.jiscadvance.biz"><img class="footer-logo" alt="JISC Advance" title="JISC Advance" src="<c:url value="/static/images/JISCAdvanceLogo.png" />" /></a>
+            </div>
+            <div class="span8 version">
+                <span>Conext is a Jisc initiative to promote effective online collaboration in all sectors. Version ${applicationProperties['portal.version']}</span>
             </div>
         </div>
     </div>

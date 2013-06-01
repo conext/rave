@@ -222,9 +222,20 @@ a{ color: @redLight; }
 .nav-tabs > .active > a:hover,
 .nav-tabs > li > a:hover,
 .tab-content{
-	background:@lightestGray;
+    background-image: url("../images/conext-menagerie.png");
+    background-position: center;
+    background-repeat: no-repeat;
 	color: @darkerGray;
 }
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover,
+.nav-tabs > li > a:hover,
+.tab-content .active .dropdown {
+  background: #e3e3e3;
+  color: #5c5c5c;
+}
+
 .tab-padding{
 	padding: 1em 2em;
 }
