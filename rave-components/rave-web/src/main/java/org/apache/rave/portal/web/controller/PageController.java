@@ -49,6 +49,7 @@ import java.util.List;
 public class PageController {
 
     private static final String GROUP_CONTEXT = "GROUPCONTEXT";
+    private static final String GROUP_DISPLAY_NAME = "GROUP_DISPLAYNAME";
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -74,6 +75,7 @@ public class PageController {
         String groupContext = (String) session.getAttribute(GROUP_CONTEXT);
         logger.debug("Previous group: " + groupContext);
         session.removeAttribute(GROUP_CONTEXT);
+        session.removeAttribute(GROUP_DISPLAY_NAME);
         List<Page> pages = getAllPagesForAuthenticatedUser();
         Page page = pageService.getDefaultPageFromList(pages);
         PageUser currentPageUser = null;
@@ -96,6 +98,7 @@ public class PageController {
         String groupContext = (String) session.getAttribute(GROUP_CONTEXT);
         logger.debug("Previous group: " + groupContext);
         session.setAttribute(GROUP_CONTEXT, groupId);
+        session.setAttribute(GROUP_DISPLAY_NAME, getGroupDisplayName(groupId));
         logger.debug("New group: " + groupId);
         User thisUser = userService.getAuthenticatedUser();
         List<Group20> group20List = ControllerUtils.getGroups(thisUser);
@@ -182,5 +185,10 @@ public class PageController {
 
     private void addGroupIdToModel(Model model, String groupId) {
         model.addAttribute(ModelKeys.GROUP_ID, groupId);
+    }
+
+    private String getGroupDisplayName(String groupId) {
+        String[] strings = groupId.split(":");
+        return strings[strings.length-1].toUpperCase();
     }
 }

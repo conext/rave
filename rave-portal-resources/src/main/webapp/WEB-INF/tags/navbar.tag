@@ -87,7 +87,7 @@
             <c:choose>
                 <c:when test="${navItem.name=='groups'}">
                     <select id="groupSelector">
-                        <option value="_select_group_">Manage your groups</option>
+                        <option value="_select_group_">Select your group</option>
                         <c:forEach items="${navItem.childNavigationItems}" var="childItem">
                             <option value="${childItem.name}">${childItem.nameParam}</option>
                         </c:forEach>
@@ -95,6 +95,14 @@
                 </c:when>
             </c:choose>
         </c:forEach>
+    </div>
+
+    <div class="group-context-wrapper">
+        <c:choose>
+            <c:when test="${!empty GROUP_DISPLAYNAME}">
+                <span class="group-context"><c:out value="${GROUP_DISPLAYNAME}"/></span>
+            </c:when>
+        </c:choose>
     </div>
 
 </c:if>

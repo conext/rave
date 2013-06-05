@@ -33,6 +33,35 @@ body {
     color: #f86d00;
 }
 
+.logo-wrapper{
+    width: 50%;
+    height: 35px;
+    padding: 5px 0;
+    background: url("../images/conext.png") no-repeat 15px 0;
+    padding-left: 140px;
+    font-size: 15px;
+    float:left;
+}
+
+.group-context-wrapper {
+    width: 20%;
+    height: 35px;
+    float: right;
+    line-height: 35px;
+    text-align: right;
+    padding-right: 165px;
+}
+
+.group-context {
+    font-size: 20px;
+    font-weight: bold;
+    color: darkred;
+}
+
+nav {
+    display: none;
+}
+
 /* RAVE PAGE */
 header {
   background: #f86d00;
