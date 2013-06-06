@@ -87,7 +87,7 @@
 # OS specific support.  $var _must_ be set to either true or false.
 
 
-CATALINA_OPTS="-Xmx1024m -XX:MaxPermSize=256m ${remote.debug.conf} -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties""
+CATALINA_OPTS="-Xmx1024m -XX:MaxPermSize=256m ${remote.debug.conf} -Dnet.sf.ehcache.disabled=${caching.disabled} -Dportal.override.properties="classpath:ci-portal.properties" -Drave-shindig.override.properties="classpath:ci-rave.shindig.properties""
 
 cygwin=false
 os400=false
