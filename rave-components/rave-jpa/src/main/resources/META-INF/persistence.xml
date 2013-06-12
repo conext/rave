@@ -59,5 +59,9 @@
                 <property name="openjpa.DataCache" value="true"/>
                 <property name="openjpa.RemoteCommitProvider" value="sjvm"/>
             </properties>-->
+
+            <properties>
+                <property name="openjpa.ConnectionFactoryProperties" value="${jpa.openjpa.ConnectionFactoryProperties}"/>
+            </properties>
         </persistence-unit>
 </persistence>
