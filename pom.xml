@@ -92,6 +92,7 @@
         <rave.dataSource.driver>com.mysql.jdbc.Driver</rave.dataSource.driver>
         <rave.dataSource.username>rave</rave.dataSource.username>
         <rave.dataSource.password>rave</rave.dataSource.password>
+        <rave.dataSource.properties>MaxActive=10;MaxIdle=5;MinIdle=2;MaxWait=1800000;autoReconnect=true;testOnBorrow=true;validationQuery=SELECT 1</rave.dataSource.properties>
         <rave.dataSource.url>jdbc:mysql://localhost:3306/rave?autoReconnect=true</rave.dataSource.url>
 
         <!-- Rave Portal default jdbc datasource configuration: using rave default configuration shared with Shindig -->
@@ -99,12 +100,14 @@
         <portal.dataSource.url>${rave.dataSource.url}</portal.dataSource.url>
         <portal.dataSource.username>${rave.dataSource.username}</portal.dataSource.username>
         <portal.dataSource.password>${rave.dataSource.password}</portal.dataSource.password>
+        <portal.dataSource.properties>${rave.dataSource.properties}</portal.dataSource.properties>
 
         <!-- Rave Shindig default jdbc datasource configuration: using rave default configuration shared with Portal -->
         <shindig.dataSource.driver>${rave.dataSource.driver}</shindig.dataSource.driver>
         <shindig.dataSource.url>${rave.dataSource.url}</shindig.dataSource.url>
         <shindig.dataSource.username>${rave.dataSource.username}</shindig.dataSource.username>
         <shindig.dataSource.password>${rave.dataSource.password}</shindig.dataSource.password>
+        <shindig.dataSource.properties>${rave.dataSource.properties}</shindig.dataSource.properties>
 
         <!-- Force maven-filesync-plugin rewrite the Eclipse FileSync plugin configuration with
             $mvn filesync:generate -Dmaven.filesync.override=true -->
