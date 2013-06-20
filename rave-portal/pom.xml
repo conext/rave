@@ -452,6 +452,13 @@
                 <conext.ajp.port>8019</conext.ajp.port>
             </properties>
         </profile>
+        <profile>
+            <id>prod-server</id>
+            <properties>
+                <conext.port>8081</conext.port>
+                <conext.ajp.port>8019</conext.ajp.port>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
