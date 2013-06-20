@@ -117,6 +117,15 @@
                 <portal.port>443</portal.port>
             </properties>
         </profile>
+        <profile>
+            <id>prod-server</id>
+            <properties>
+                <portal.opensocial_engine.root>https://portal.showtime.jiscadvance.biz</portal.opensocial_engine.root>
+                <portal.host>portal.showtime.jiscadvance.biz</portal.host>
+                <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
+                <portal.port>443</portal.port>
+            </properties>
+        </profile>
     </profiles>
 
 </project>

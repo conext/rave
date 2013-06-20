@@ -265,7 +265,6 @@
                 </remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
-                <portal.port>80</portal.port>
                 <caching.disabled>true</caching.disabled>
                 <wayf.url.metadata>https://engine.collaborate.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
                 <wayf.url.sso>https://engine.collaborate.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
@@ -280,7 +279,6 @@
                 <remote.debug.conf></remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
-                <portal.port>80</portal.port>
                 <caching.disabled>false</caching.disabled>
                 <wayf.url.metadata>https://engine.collaborate.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
                 <wayf.url.sso>https://engine.collaborate.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
@@ -295,7 +293,6 @@
                 <remote.debug.conf></remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portal.showtime.jiscadvance.biz</portal.host>
-                <portal.port>80</portal.port>
                 <caching.disabled>false</caching.disabled>
                 <wayf.url.metadata>https://engine.showtime.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
                 <wayf.url.sso>https://engine.showtime.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
