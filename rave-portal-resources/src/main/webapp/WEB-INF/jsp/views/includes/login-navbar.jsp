@@ -21,7 +21,7 @@
 
 <header>
 
-    <nav>
+    <nav class="page">
         <div class="navbar navbar-fixed-top">
             <div class="container">
                 <a href="/" class="brand">RAVE</a>

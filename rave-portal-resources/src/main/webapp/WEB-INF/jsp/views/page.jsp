@@ -49,7 +49,7 @@
 <c:set var="canMoveWidgetsToEditablePage" scope="request" value="false"/>
 
 <div id="pageContent" class="container-fluid">
-    <nav>
+    <nav class="page">
         <ul class="nav nav-tabs">
             <c:forEach var="userPage" items="${pages}">
                 <%-- determine if the current page in the list matches the page the user is viewing --%>
