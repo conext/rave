@@ -44,7 +44,7 @@ public class ControllerUtils {
 
     private static String oauthKey = "https://rave.dev.surfconext.nl/asdf";
     private static String oauthSecret = "mysecret";
-    private static String apiLocation = "https://api.jacson.jiscadvance.biz/v1/";
+    private static String apiLocation = "https://api.collaborate.jiscadvance.biz/v1/";
 
 
     /**
