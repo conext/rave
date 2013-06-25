@@ -82,7 +82,7 @@ public class ControllerUtils {
         final NavigationMenu topMenu = getTopMenu(view, referringPageId, user, addStore);
         model.addAttribute(topMenu.getName(), topMenu);
     }
-    
+
     public static NavigationMenu getTopMenu(String view, String referringPageId, User user, boolean addStoreLink) {
         NavigationMenu menu = new NavigationMenu("topnav");
         if(view.startsWith(ViewNames.PAGE) || view.startsWith(ViewNames.MOBILE_HOME)) {
@@ -179,11 +179,13 @@ public class ControllerUtils {
         NavigationItem groups = new NavigationItem();
         groups.setName("groups");
         List<Group20> group20List = getGroups(user);
-        for (Group20 group20 : group20List) {
-            NavigationItem groupItem = new NavigationItem();
-            groupItem.setNameParam(group20.getTitle());
-            groupItem.setName(group20.getId());
-            groups.addChildNavigationItem(groupItem);
+        if (group20List != null) {
+            for (Group20 group20 : group20List) {
+                NavigationItem groupItem = new NavigationItem();
+                groupItem.setNameParam(group20.getTitle());
+                groupItem.setName(group20.getId());
+                groups.addChildNavigationItem(groupItem);
+            }
         }
         return groups;
     }
