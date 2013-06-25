@@ -58,6 +58,10 @@ body {
     color: darkred;
 }
 
+nav.page {
+    display: none;
+}
+
 /* RAVE PAGE */
 header {
   background: #f86d00;
