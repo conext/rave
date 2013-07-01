@@ -34,7 +34,7 @@ body {
 }
 
 .logo-wrapper{
-    width: 50%;
+    width: 30%;
     height: 35px;
     padding: 5px 0;
     background: url("../images/conext.png") no-repeat 15px 0;
@@ -44,7 +44,7 @@ body {
 }
 
 .group-context-wrapper {
-    width: 35%;
+    width: 40%;
     height: 35px;
     float: right;
     line-height: 35px;
