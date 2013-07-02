@@ -652,17 +652,17 @@ _.extend(rave.ui, (function () {
             }
 
             function aboutWidget() {
-                rave.viewWidgetDetail(self.widget.id, getCurrentPageId());
+                rave.viewWidgetDetail(widgetId, getCurrentPageId());
                 return false;
             }
 
             function commentOnWidget() {
-                rave.viewWidgetDetail(self.widget.id, getCurrentPageId(), 'widgetComments');
+                rave.viewWidgetDetail(widgetId, getCurrentPageId(), 'widgetComments');
                 return false;
             }
 
             function rateWidget() {
-                rave.viewWidgetDetail(self.widget.id, getCurrentPageId(), 'widgetRatings');
+                rave.viewWidgetDetail(widgetId, getCurrentPageId(), 'widgetRatings');
                 return false;
             }
 
