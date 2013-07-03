@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div style="margin-bottom:10px">
         <div class="logo-wrapper">
             <c:forEach items="${topnav.navigationItems}" var="navItem">
                 <c:choose>
