@@ -104,6 +104,6 @@
             </c:when>
         </c:choose>
     </div>
-    <div style="clear:both">
+    <div style="clear:both"></div>
 
 </c:if>
