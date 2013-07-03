@@ -46,12 +46,12 @@
 <script lang="javascript">
 
     <c:choose>
-        <c:when test="${!empty GROUPCONTEXT}" >
-            var currentGroup = '<c:out value="${GROUPCONTEXT}"/>';
-        </c:when>
-        <c:otherwise>
-            var currentGroup = false;
-        </c:otherwise>
+    <c:when test="${!empty GROUPCONTEXT}" >
+    var currentGroup = '<c:out value="${GROUPCONTEXT}"/>';
+    </c:when>
+    <c:otherwise>
+    var currentGroup = false;
+    </c:otherwise>
     </c:choose>
 
     var e = document.getElementById("groupSelector");
@@ -70,8 +70,10 @@
 
         var elements = document.getElementsByClassName('widget');
         for (var i=0;i<elements.length;i++) {
-            var iframe = elements[i].firstChild.contentWindow;
-            iframe.postMessage(currentGroup, "${portal.opensocial_engine.root}");
+            if (elements[i].firstChild) {
+                var iframe = elements[i].firstChild.contentWindow;
+                iframe.postMessage(currentGroup, "${portal.opensocial_engine.root}");
+            }
         }
     };
 
