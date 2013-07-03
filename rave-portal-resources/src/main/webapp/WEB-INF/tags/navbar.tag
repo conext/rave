@@ -82,28 +82,30 @@
             </div>
         </div>
     </div>
-    <div class="logo-wrapper">
-        <c:forEach items="${topnav.navigationItems}" var="navItem">
+    <div>
+        <div class="logo-wrapper">
+            <c:forEach items="${topnav.navigationItems}" var="navItem">
+                <c:choose>
+                    <c:when test="${navItem.name=='groups'}">
+                        <select id="groupSelector">
+                            <option value="_select_group_">Select your group</option>
+                            <c:forEach items="${navItem.childNavigationItems}" var="childItem">
+                                <option value="${childItem.name}">${childItem.nameParam}</option>
+                            </c:forEach>
+                        </select>
+                    </c:when>
+                </c:choose>
+            </c:forEach>
+        </div>
+
+        <div class="group-context-wrapper">
             <c:choose>
-                <c:when test="${navItem.name=='groups'}">
-                    <select id="groupSelector">
-                        <option value="_select_group_">Select your group</option>
-                        <c:forEach items="${navItem.childNavigationItems}" var="childItem">
-                            <option value="${childItem.name}">${childItem.nameParam}</option>
-                        </c:forEach>
-                    </select>
+                <c:when test="${!empty GROUP_DISPLAYNAME}">
+                    <span class="group-context"><c:out value="${GROUP_DISPLAYNAME}"/></span>
                 </c:when>
             </c:choose>
-        </c:forEach>
+        </div>
+        <div style="clear:both"></div>
     </div>
-
-    <div class="group-context-wrapper">
-        <c:choose>
-            <c:when test="${!empty GROUP_DISPLAYNAME}">
-                <span class="group-context"><c:out value="${GROUP_DISPLAYNAME}"/></span>
-            </c:when>
-        </c:choose>
-    </div>
-    <div style="clear:both"></div>
 
 </c:if>
