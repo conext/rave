@@ -45,6 +45,11 @@
             <groupId>org.apache.shindig</groupId>
             <artifactId>shindig-social-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.rave</groupId>
+            <artifactId>rave-opensocial-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
