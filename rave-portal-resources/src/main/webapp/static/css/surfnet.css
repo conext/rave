@@ -163,6 +163,10 @@ header a:hover {
     background: #FFFFFF;
 }
 
+.container-fluid {
+    padding-top: 0px;
+}
+
 .widget-title-bar {
     background-image: linear-gradient(bottom, #F18203 94%, #FFFFFF 100%);
     background-image: -o-linear-gradient(bottom, #F18203 94%, #FFFFFF 100%);
