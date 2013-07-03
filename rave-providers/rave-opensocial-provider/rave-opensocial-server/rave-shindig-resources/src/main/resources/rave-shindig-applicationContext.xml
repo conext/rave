@@ -60,10 +60,25 @@
         <property name="oauthSecret" value="${oauthSecret}"/>
         <property name="oauthKey" value="${oauthKey}"/>
         <property name="apiLocation" value="${apiLocation}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
         <property name="regrouperApiLocation" value="${regroupApiLocation}"/>
+        <property name="restTemplate" ref="restTemplate"   />
     </bean>
+    
+    <bean class="org.springframework.web.client.RestTemplate" id="restTemplate">
+        <constructor-arg name="requestFactory" ref="requestFactory"/>
+    </bean>
+
+    <bean id="requestFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+            <constructor-arg name="httpClient" ref="httpClient"/>
+    </bean>
+
+    <bean id="poolingClientConnectionManager" class="org.apache.http.impl.conn.PoolingClientConnectionManager" />
+    <bean id="httpClient" class="org.apache.rave.util.UsernamePasswordHttpClient">
+        <constructor-arg name="conman" ref="poolingClientConnectionManager"/>
+        <property name="username" value="${regroup-username}"/>
+        <property name="password" value="${regroup-password}"/>
+    </bean>
+
 
     <bean id="oAuthStore" class="org.apache.rave.gadgets.oauth.inject.DefaultOAuthStore">
         <constructor-arg name="defaultCallbackUrl" value="${shindig.signing.global-callback-url}"/>

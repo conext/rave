@@ -374,6 +374,12 @@
                 <groupId>org.surfnet.coin</groupId>
                 <artifactId>coin-api-client</artifactId>
                 <version>${coin-api.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.codehaus.jackson</groupId>

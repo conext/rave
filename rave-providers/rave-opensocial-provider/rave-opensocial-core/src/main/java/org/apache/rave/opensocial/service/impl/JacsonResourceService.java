@@ -54,10 +54,11 @@ public class JacsonResourceService implements ResourceService {
     private static final String REGROUP_APPID_PARAM = "appId";
 
     private String regrouperApiLocation;
-    private String username;
-    private String password;
-
     private RestTemplate restTemplate;
+
+    public JacsonResourceService() {
+
+    }
 
     @Override
     public Future<Resource> getResources(
@@ -108,22 +109,12 @@ public class JacsonResourceService implements ResourceService {
 
             final Resource resourceImpl = new ResourceImpl();
 
-            DefaultHttpClient client = new DefaultHttpClient();
-            client.getCredentialsProvider().setCredentials(
-                    new AuthScope(AuthScope.ANY),
-                    new UsernamePasswordCredentials(username,password));
-            HttpComponentsClientHttpRequestFactory factory =  new HttpComponentsClientHttpRequestFactory(client);
-
-            this.restTemplate = new RestTemplate(factory);
-            this.restTemplate.setErrorHandler(new RegrouperErrorHandler(200));
-
             Map<String, String> vars = new HashMap<String, String>();
             vars.put(REGROUP_GROUPID_PARAM, requestedGroupId);
             try {
                 vars.put(REGROUP_APPID_PARAM, URLEncoder.encode(token.getAppId(), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
-                //TODO(mmachulak): refactor
-                e.printStackTrace();
+                logger.error("Cannot encode app id: ", e);
             }
             String rsp = restTemplate.getForObject(regrouperApiLocation, String.class, vars);
             resourceImpl.setResource(rsp);
@@ -204,15 +195,6 @@ public class JacsonResourceService implements ResourceService {
 
             final Resource resourceImpl = new ResourceImpl();
 
-            DefaultHttpClient client = new DefaultHttpClient();
-            client.getCredentialsProvider().setCredentials(
-                    new AuthScope(AuthScope.ANY),
-                    new UsernamePasswordCredentials(username,password));
-            HttpComponentsClientHttpRequestFactory factory =  new HttpComponentsClientHttpRequestFactory(client);
-
-            this.restTemplate = new RestTemplate(factory);
-            this.restTemplate.setErrorHandler(new RegrouperErrorHandler(201));
-
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.setAcceptCharset(Lists.newArrayList(Charset.forName("utf-8")));
@@ -220,12 +202,11 @@ public class JacsonResourceService implements ResourceService {
             HttpEntity httpEntity = new HttpEntity<String>(resourceObj, headers);
 
             Map<String, String> vars = new HashMap<String, String>();
-            vars.put(REGROUP_GROUPID_PARAM,requestedGroupId);
+            vars.put(REGROUP_GROUPID_PARAM, requestedGroupId);
             try {
                 vars.put(REGROUP_APPID_PARAM, URLEncoder.encode(token.getAppId(), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
-                //TODO(mmachulak): refactor
-                e.printStackTrace();
+                logger.error("Cennot encode app id", e);
             }
             ResponseEntity<String> responseEntity =
                     restTemplate.exchange(regrouperApiLocation, HttpMethod.PUT, httpEntity, String.class, vars);
@@ -308,15 +289,6 @@ public class JacsonResourceService implements ResourceService {
 
             final Resource resourceImpl = new ResourceImpl();
 
-            DefaultHttpClient client = new DefaultHttpClient();
-            client.getCredentialsProvider().setCredentials(
-                    new AuthScope(AuthScope.ANY),
-                    new UsernamePasswordCredentials(username,password));
-            HttpComponentsClientHttpRequestFactory factory =  new HttpComponentsClientHttpRequestFactory(client);
-
-            this.restTemplate = new RestTemplate(factory);
-            this.restTemplate.setErrorHandler(new RegrouperErrorHandler(200));
-
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -327,8 +299,7 @@ public class JacsonResourceService implements ResourceService {
             try {
                 vars.put(REGROUP_APPID_PARAM, URLEncoder.encode(token.getAppId(), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
-                //TODO(mmachulak): refactor
-                e.printStackTrace();
+                logger.error("Cennot encode app id", e);
             }
             ResponseEntity<String> responseEntity =
                     restTemplate.exchange(regrouperApiLocation, HttpMethod.DELETE, httpEntity, String.class, vars);
@@ -383,13 +354,7 @@ public class JacsonResourceService implements ResourceService {
     }
 
     @Required
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
-
-    @Required
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
 }
