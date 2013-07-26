@@ -136,18 +136,12 @@
             <url>http://oauth.googlecode.com/svn/code/maven</url>
         </repository>
         <repository>
-            <id>cloudidentity</id>
-            <url>https://dev.cloudidentity.co.uk/nexus/content/groups/public</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
+            <id>biblio</id>
+            <url>http://mirrors.ibiblio.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>surfnet</id>
+            <url>https://build.surfconext.nl/repository/public/releases/</url>
         </repository>
     </repositories>
 
