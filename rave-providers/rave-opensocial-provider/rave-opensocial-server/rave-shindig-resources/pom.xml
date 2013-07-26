@@ -111,6 +111,9 @@
                 <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
                 <portal.opensocial_engine.protocol>http</portal.opensocial_engine.protocol>
                 <portal.port>80</portal.port>
+                <regroupApiLocation>https://regroup.identitylabs.org/group/{groupId}/resources/{appId}</regroupApiLocation>
+                <regroupUsername>shindig</regroupUsername>
+                <regroupPassword>shindig</regroupPassword>
             </properties>
         </profile>
         <profile>
@@ -120,6 +123,9 @@
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
                 <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
                 <portal.port>443</portal.port>
+                <regroupApiLocation>https://regroup.collaborate.jiscadvance.biz/group/{groupId}/resources/{appId}</regroupApiLocation>
+                <regroupUsername>shindig</regroupUsername>
+                <regroupPassword>shindig</regroupPassword>
             </properties>
         </profile>
         <profile>
@@ -129,6 +135,9 @@
                 <portal.host>portal.showtime.jiscadvance.biz</portal.host>
                 <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
                 <portal.port>443</portal.port>
+                <regroupApiLocation>https://regroup.collaborate.jiscadvance.biz/group/{groupId}/resources/{appId}</regroupApiLocation>
+                <regroupUsername>shindig</regroupUsername>
+                <regroupPassword>shindig</regroupPassword>
             </properties>
         </profile>
     </profiles>
