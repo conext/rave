@@ -28,16 +28,16 @@
 
    <import resource="classpath*:org/apache/rave/persistence-applicationContext.xml" />
 
-    <bean id="dataImporter" class="org.apache.rave.portal.util.data.DataImporter">
-        <property name="dataExecutor">
-            <bean class="org.apache.rave.portal.util.data.DataImporter$ExecutorImpl" />
-        </property>
-        <property name="scriptLocations">
-            <list>
-                <value>classpath:db/initial-data.json</value>
-            </list>
-        </property>
-    </bean>
+    <!--<bean id="dataImporter" class="org.apache.rave.portal.util.data.DataImporter">-->
+        <!--<property name="dataExecutor">-->
+            <!--<bean class="org.apache.rave.portal.util.data.DataImporter$ExecutorImpl" />-->
+        <!--</property>-->
+        <!--<property name="scriptLocations">-->
+            <!--<list>-->
+                <!--<value>classpath:db/initial-data.json</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!--&lt;!&ndash; provides a H2 console to look into the db if necessary &ndash;&gt;-->
     <!--<bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"-->
