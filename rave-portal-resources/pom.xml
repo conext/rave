@@ -39,6 +39,19 @@
         <remote.debug.conf>-Xdebug -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5012
         </remote.debug.conf>
         <conext.port>8080</conext.port>
+        <metadata.service.name.en>JISC Conext Portal</metadata.service.name.en>
+        <metadata.service.name.nl>JISC Conext Portal</metadata.service.name.nl>
+        <metadata.service.description.en>JISC Conext Portal</metadata.service.description.en>
+        <metadata.service.description.nl>JISC Conext Portal</metadata.service.description.nl>
+        <contact.person.administrative.givenname>George Munroe</contact.person.administrative.givenname>
+        <contact.person.administrative.surname>George</contact.person.administrative.surname>
+        <contact.person.administrative.email>george@platypusconsultancy.com</contact.person.administrative.email>
+        <contact.person.technical.givenname>Maciej</contact.person.technical.givenname>
+        <contact.person.technical.surname>Machulak</contact.person.technical.surname>
+        <contact.person.technical.email>maciej.machulak@cloudidentity.co.uk</contact.person.technical.email>
+        <contact.person.support.givenname>Maciej</contact.person.support.givenname>
+        <contact.person.support.surname>Machulak</contact.person.support.surname>
+        <contact.person.support.email>maciej.machulak@cloudidentity.co.uk</contact.person.support.email>
     </properties>
 
     <!--
@@ -271,23 +284,32 @@
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portaldev.cloud.jiscadvance.biz</portal.host>
                 <caching.disabled>true</caching.disabled>
-                <wayf.url.metadata>https://engine.collaborate.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
-                <wayf.url.sso>https://engine.collaborate.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
-                <wayf.certificate>MIIDYzCCAkugAwIBAgIJAMe9hgMWdr96MA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTMwNTAxMTYyOTQzWhcNMjMwNTAxMTYyOTQzWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0aDWJtJ+6uteoj+66wsuRs9KBWUM1iHxptNv7tx8rci1mBS0p53yBYzzOe59Nych7w/i0QtNuWddecdlPU50lKM/cqixjlkJo45g/rJdl06JfvopXTG2RC7VCbt5ULBTbwmLiAcUpBFYCi2sGJFVQauVY1fpHDNxZLj/kGAyrTbW5rUIXr0CP7wV/ym559DaaWq2W6cGMW874d/om9mkk0ri1R1FLvux+DW2dfXUmdldaZscGFd0KPW5ybsaLLtKdVhs6iO8F3J1t7pQW7DtiefbdCJ5Px8YiO2oRRAMEr3bLtaYPRffKQ/UWhguLA30PA+v/IPfDezBML2n0BIRZQIDAQABo1AwTjAdBgNVHQ4EFgQUmD8t8aSu0AP0v1xLBuVqUfyXV7wwHwYDVR0jBBgwFoAUmD8t8aSu0AP0v1xLBuVqUfyXV7wwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAicANw1DbSzuYbiB8JF7pXRfP3/xaZlIxdQNijMP1UJ0wJKJnpSNkIlC35SAEwclpu/GUn73iBjcQpyqRlSID44OWqIHMx5KaOvdBEOCfPJv91z+TkDeVir1/oz6LoDV/nooJAxDrveGZv9IC1PJ5vpRIhoMxBDYlp4XLOAXnm4/TaGTX7kcpoglCHp5G2oBQv2ylt18W6jiKscEGm8XanaOz9tsBH3y1Nl+p+HH7y9H/tA/3Lcz8rJHW0/cY0qQ2LT2Q570d+Pr6CdQnprRRcA8rQJXJmaO5ykdm3PcDfF5UAVOByUo5o1p6x3XOGlPC2kPGqmbJzePt/ULRKn7KtA==</wayf.certificate>
+                <wayf.url.metadata>https://engine.collaborate.jiscadvance.biz/authentication/idp/metadata
+                </wayf.url.metadata>
+                <wayf.url.sso>https://engine.collaborate.jiscadvance.biz/authentication/idp/single-sign-on
+                </wayf.url.sso>
+                <wayf.certificate>
+                    MIIDYzCCAkugAwIBAgIJAMe9hgMWdr96MA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTMwNTAxMTYyOTQzWhcNMjMwNTAxMTYyOTQzWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0aDWJtJ+6uteoj+66wsuRs9KBWUM1iHxptNv7tx8rci1mBS0p53yBYzzOe59Nych7w/i0QtNuWddecdlPU50lKM/cqixjlkJo45g/rJdl06JfvopXTG2RC7VCbt5ULBTbwmLiAcUpBFYCi2sGJFVQauVY1fpHDNxZLj/kGAyrTbW5rUIXr0CP7wV/ym559DaaWq2W6cGMW874d/om9mkk0ri1R1FLvux+DW2dfXUmdldaZscGFd0KPW5ybsaLLtKdVhs6iO8F3J1t7pQW7DtiefbdCJ5Px8YiO2oRRAMEr3bLtaYPRffKQ/UWhguLA30PA+v/IPfDezBML2n0BIRZQIDAQABo1AwTjAdBgNVHQ4EFgQUmD8t8aSu0AP0v1xLBuVqUfyXV7wwHwYDVR0jBBgwFoAUmD8t8aSu0AP0v1xLBuVqUfyXV7wwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAicANw1DbSzuYbiB8JF7pXRfP3/xaZlIxdQNijMP1UJ0wJKJnpSNkIlC35SAEwclpu/GUn73iBjcQpyqRlSID44OWqIHMx5KaOvdBEOCfPJv91z+TkDeVir1/oz6LoDV/nooJAxDrveGZv9IC1PJ5vpRIhoMxBDYlp4XLOAXnm4/TaGTX7kcpoglCHp5G2oBQv2ylt18W6jiKscEGm8XanaOz9tsBH3y1Nl+p+HH7y9H/tA/3Lcz8rJHW0/cY0qQ2LT2Q570d+Pr6CdQnprRRcA8rQJXJmaO5ykdm3PcDfF5UAVOByUo5o1p6x3XOGlPC2kPGqmbJzePt/ULRKn7KtA==
+                </wayf.certificate>
             </properties>
         </profile>
         <profile>
             <id>staging-server</id>
             <properties>
-                <portal.opensocial_engine.root>https://portal.collaborate.jiscadvance.biz</portal.opensocial_engine.root>
+                <portal.opensocial_engine.root>https://portal.collaborate.jiscadvance.biz
+                </portal.opensocial_engine.root>
                 <portal.opensocial_engine.protocol>https</portal.opensocial_engine.protocol>
                 <remote.debug.conf></remote.debug.conf>
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portal.collaborate.jiscadvance.biz</portal.host>
                 <caching.disabled>false</caching.disabled>
-                <wayf.url.metadata>https://engine.collaborate.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
-                <wayf.url.sso>https://engine.collaborate.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
-                <wayf.certificate>MIIDYzCCAkugAwIBAgIJAMe9hgMWdr96MA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTMwNTAxMTYyOTQzWhcNMjMwNTAxMTYyOTQzWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0aDWJtJ+6uteoj+66wsuRs9KBWUM1iHxptNv7tx8rci1mBS0p53yBYzzOe59Nych7w/i0QtNuWddecdlPU50lKM/cqixjlkJo45g/rJdl06JfvopXTG2RC7VCbt5ULBTbwmLiAcUpBFYCi2sGJFVQauVY1fpHDNxZLj/kGAyrTbW5rUIXr0CP7wV/ym559DaaWq2W6cGMW874d/om9mkk0ri1R1FLvux+DW2dfXUmdldaZscGFd0KPW5ybsaLLtKdVhs6iO8F3J1t7pQW7DtiefbdCJ5Px8YiO2oRRAMEr3bLtaYPRffKQ/UWhguLA30PA+v/IPfDezBML2n0BIRZQIDAQABo1AwTjAdBgNVHQ4EFgQUmD8t8aSu0AP0v1xLBuVqUfyXV7wwHwYDVR0jBBgwFoAUmD8t8aSu0AP0v1xLBuVqUfyXV7wwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAicANw1DbSzuYbiB8JF7pXRfP3/xaZlIxdQNijMP1UJ0wJKJnpSNkIlC35SAEwclpu/GUn73iBjcQpyqRlSID44OWqIHMx5KaOvdBEOCfPJv91z+TkDeVir1/oz6LoDV/nooJAxDrveGZv9IC1PJ5vpRIhoMxBDYlp4XLOAXnm4/TaGTX7kcpoglCHp5G2oBQv2ylt18W6jiKscEGm8XanaOz9tsBH3y1Nl+p+HH7y9H/tA/3Lcz8rJHW0/cY0qQ2LT2Q570d+Pr6CdQnprRRcA8rQJXJmaO5ykdm3PcDfF5UAVOByUo5o1p6x3XOGlPC2kPGqmbJzePt/ULRKn7KtA==</wayf.certificate>
+                <wayf.url.metadata>https://engine.collaborate.jiscadvance.biz/authentication/idp/metadata
+                </wayf.url.metadata>
+                <wayf.url.sso>https://engine.collaborate.jiscadvance.biz/authentication/idp/single-sign-on
+                </wayf.url.sso>
+                <wayf.certificate>
+                    MIIDYzCCAkugAwIBAgIJAMe9hgMWdr96MA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTMwNTAxMTYyOTQzWhcNMjMwNTAxMTYyOTQzWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0aDWJtJ+6uteoj+66wsuRs9KBWUM1iHxptNv7tx8rci1mBS0p53yBYzzOe59Nych7w/i0QtNuWddecdlPU50lKM/cqixjlkJo45g/rJdl06JfvopXTG2RC7VCbt5ULBTbwmLiAcUpBFYCi2sGJFVQauVY1fpHDNxZLj/kGAyrTbW5rUIXr0CP7wV/ym559DaaWq2W6cGMW874d/om9mkk0ri1R1FLvux+DW2dfXUmdldaZscGFd0KPW5ybsaLLtKdVhs6iO8F3J1t7pQW7DtiefbdCJ5Px8YiO2oRRAMEr3bLtaYPRffKQ/UWhguLA30PA+v/IPfDezBML2n0BIRZQIDAQABo1AwTjAdBgNVHQ4EFgQUmD8t8aSu0AP0v1xLBuVqUfyXV7wwHwYDVR0jBBgwFoAUmD8t8aSu0AP0v1xLBuVqUfyXV7wwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAicANw1DbSzuYbiB8JF7pXRfP3/xaZlIxdQNijMP1UJ0wJKJnpSNkIlC35SAEwclpu/GUn73iBjcQpyqRlSID44OWqIHMx5KaOvdBEOCfPJv91z+TkDeVir1/oz6LoDV/nooJAxDrveGZv9IC1PJ5vpRIhoMxBDYlp4XLOAXnm4/TaGTX7kcpoglCHp5G2oBQv2ylt18W6jiKscEGm8XanaOz9tsBH3y1Nl+p+HH7y9H/tA/3Lcz8rJHW0/cY0qQ2LT2Q570d+Pr6CdQnprRRcA8rQJXJmaO5ykdm3PcDfF5UAVOByUo5o1p6x3XOGlPC2kPGqmbJzePt/ULRKn7KtA==
+                </wayf.certificate>
             </properties>
         </profile>
         <profile>
@@ -299,9 +321,12 @@
                 <assertion.consumer.service>/AssertionConsumerService</assertion.consumer.service>
                 <portal.host>portal.showtime.jiscadvance.biz</portal.host>
                 <caching.disabled>false</caching.disabled>
-                <wayf.url.metadata>https://engine.showtime.jiscadvance.biz/authentication/idp/metadata</wayf.url.metadata>
+                <wayf.url.metadata>https://engine.showtime.jiscadvance.biz/authentication/idp/metadata
+                </wayf.url.metadata>
                 <wayf.url.sso>https://engine.showtime.jiscadvance.biz/authentication/idp/single-sign-on</wayf.url.sso>
-                <wayf.certificate>MIIDYzCCAkugAwIBAgIJAKUl9lTHD7g2MA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTMwNTAxMTEzODUxWhcNMjMwNTAxMTEzODUxWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5p9zD9JoaxlNenevmr03dTRDmT20eifRz5DNiUBtyfQNaZbXCrz8kWfYnC4LzBMZ9FogzWGYfJrGihgb33Wozun6kHWmyiJsuIUxHdnPn0cPe8fUBWtJzNAwlPPe7NfyXBXksApWRzvxdoXPDIdrFl7cZ1Ttz/lLh/g54GZVVXLmWapise5tadrSrFnCnO2chI/jHA9M0P5NjrKsUFxINNEBMDwKH5XGvv3COnrbImwFFxt4jj9+oKXkuEW4+Usa56cQ2JBdmg21uqgXN3KCOkcHVlLInM62E8wMZ0De1/zS7Li4OAdc7nYoBBscnBjSrh094sW9zzrXKRDWGIs9mQIDAQABo1AwTjAdBgNVHQ4EFgQUFGcN40NN1kY0ev2bYT3nZgXzwb0wHwYDVR0jBBgwFoAUFGcN40NN1kY0ev2bYT3nZgXzwb0wDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAaZGoJDqVaKSjGXFK/R4tj8vPC03rqg1FJF2pdYVEZ97msa4ZpG1ukPKDuKNzKm/MHnFatLGiK2xv3TUayfg2YEE0yMdtUKSYt9+KT6b+ALm88nMUSSWY07mafcXDMXBDotjnhD/kgBNgwh4d81ptn39DJ603h/IZJ6rIEjg1VG0YvAjTmwvTmNGWOZ9RsFb7VFCVV+sdZN4AAkP2hfG9NY16FzX11Lknc7Y4KBeR/k8td1V+Htb19EF9YDj+m58t0EM4j84Ug5aStbaaeyz1A2mt4LXTuIgFrezfrBtx2OJdOOfPU0b6yBk8P4JH2kfzdneTUT9ZloQiipMTWWOWAw==</wayf.certificate>
+                <wayf.certificate>
+                    MIIDYzCCAkugAwIBAgIJAKUl9lTHD7g2MA0GCSqGSIb3DQEBBQUAMEgxFDASBgNVBAMMC0VuZ2luZUJsb2NrMREwDwYDVQQLDAhTZXJ2aWNlczEQMA4GA1UECgwHU1VSRm5ldDELMAkGA1UEBhMCTkwwHhcNMTMwNTAxMTEzODUxWhcNMjMwNTAxMTEzODUxWjBIMRQwEgYDVQQDDAtFbmdpbmVCbG9jazERMA8GA1UECwwIU2VydmljZXMxEDAOBgNVBAoMB1NVUkZuZXQxCzAJBgNVBAYTAk5MMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5p9zD9JoaxlNenevmr03dTRDmT20eifRz5DNiUBtyfQNaZbXCrz8kWfYnC4LzBMZ9FogzWGYfJrGihgb33Wozun6kHWmyiJsuIUxHdnPn0cPe8fUBWtJzNAwlPPe7NfyXBXksApWRzvxdoXPDIdrFl7cZ1Ttz/lLh/g54GZVVXLmWapise5tadrSrFnCnO2chI/jHA9M0P5NjrKsUFxINNEBMDwKH5XGvv3COnrbImwFFxt4jj9+oKXkuEW4+Usa56cQ2JBdmg21uqgXN3KCOkcHVlLInM62E8wMZ0De1/zS7Li4OAdc7nYoBBscnBjSrh094sW9zzrXKRDWGIs9mQIDAQABo1AwTjAdBgNVHQ4EFgQUFGcN40NN1kY0ev2bYT3nZgXzwb0wHwYDVR0jBBgwFoAUFGcN40NN1kY0ev2bYT3nZgXzwb0wDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOCAQEAaZGoJDqVaKSjGXFK/R4tj8vPC03rqg1FJF2pdYVEZ97msa4ZpG1ukPKDuKNzKm/MHnFatLGiK2xv3TUayfg2YEE0yMdtUKSYt9+KT6b+ALm88nMUSSWY07mafcXDMXBDotjnhD/kgBNgwh4d81ptn39DJ603h/IZJ6rIEjg1VG0YvAjTmwvTmNGWOZ9RsFb7VFCVV+sdZN4AAkP2hfG9NY16FzX11Lknc7Y4KBeR/k8td1V+Htb19EF9YDj+m58t0EM4j84Ug5aStbaaeyz1A2mt4LXTuIgFrezfrBtx2OJdOOfPU0b6yBk8P4JH2kfzdneTUT9ZloQiipMTWWOWAw==
+                </wayf.certificate>
             </properties>
         </profile>
     </profiles>

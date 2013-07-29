@@ -14,11 +14,12 @@
 
   <mvc:annotation-driven/>
 
-  <bean id="authnRequestController" class="nl.surfnet.spring.security.opensaml.controller.AuthnRequestController">
+  <bean id="authnRequestController" class="uk.co.cloudidentity.rave.portal.resources.AuthnPrefixRequestController">
     <property name="assertionConsumerServiceURL" value="${ASSERTION_CONSUMER_URL}" />
       <property name="credentialResolver" ref="keyStoreCredentialResolverDelegate"/>
     <property name="SAMLMessageHandler" ref="samlMessageHandler" />
     <property name="entityID" value="${ISSUING_ENTITY_ID}"/>
+    <property name="metaDataProperties" value="conext.metadata.properties" />
   </bean>
 
 </beans>
