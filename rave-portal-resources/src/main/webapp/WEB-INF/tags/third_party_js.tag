@@ -22,13 +22,14 @@
      to pull them in externally.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%-- json script --%>
 <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
 <%-- underscore --%>
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <%-- jquery scripts --%>
 <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.2.min.js"></script>
-<script src="http://urldecoderonline.com/js/jquery.urldecoder.min.js"></script>
+<script src="<spring:url value="/static/script/jquery-ui.min.js"/>"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.17/jquery-ui.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
