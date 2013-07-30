@@ -114,6 +114,7 @@
                 <regroupApiLocation>https://regroup.identitylabs.org/group/{groupId}/resources/{appId}</regroupApiLocation>
                 <regroupUsername>shindig</regroupUsername>
                 <regroupPassword>shindig</regroupPassword>
+                <apiLocation>https://api.collaborate.jiscadvance.biz/v1/</apiLocation>
             </properties>
         </profile>
         <profile>
@@ -126,6 +127,7 @@
                 <regroupApiLocation>https://regroup.collaborate.jiscadvance.biz/group/{groupId}/resources/{appId}</regroupApiLocation>
                 <regroupUsername>shindig</regroupUsername>
                 <regroupPassword>shindig</regroupPassword>
+                <apiLocation>https://api.collaborate.jiscadvance.biz/v1/</apiLocation>
             </properties>
         </profile>
         <profile>
@@ -138,6 +140,7 @@
                 <regroupApiLocation>https://regroup.collaborate.jiscadvance.biz/group/{groupId}/resources/{appId}</regroupApiLocation>
                 <regroupUsername>shindig</regroupUsername>
                 <regroupPassword>shindig</regroupPassword>
+                <apiLocation>https://api.showtime.jiscadvance.biz/v1/</apiLocation>
             </properties>
         </profile>
     </profiles>
