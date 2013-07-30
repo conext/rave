@@ -56,17 +56,17 @@
     </c:choose>
 
     var e = document.getElementById("groupSelector");
-    if (currentGroup) {
-        if (e != null) {
-            for(var i = 0, j = e.options.length; i < j; ++i) {
-                if(e.options[i].value === currentGroup) {
+    if (e != null) {
+        if (currentGroup) {
+            for (var i = 0, j = e.options.length; i < j; ++i) {
+                if (e.options[i].value === currentGroup) {
                     e.selectedIndex = i;
                     break;
                 }
             }
+        } else {
+            e.selectedIndex = 0;
         }
-    } else {
-        e.selectedIndex = 0;
     }
 
     var publishEvent = function() {
