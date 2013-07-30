@@ -41,9 +41,9 @@
                 <c:choose>
                     <c:when test="${widget.widgetStatus eq 'PUBLISHED'}">
                         <div id="widgetAdded_${widget.id}" class="detailWidgetAdd">
-                            <button class="btn btn-primary btn-large storeItemButton"
+                            <button class="btn btn-primary btn-large storeItemButton widgetJspAddWidgetButton"
                                     id="addWidget_${widget.id}"
-                                    onclick="rave.api.rpc.addWidgetToPage({widgetId: '${widget.id}', pageId: '${referringPageId}', redirectAfterAdd:true});"
+                                    data-widget-id="${widget.id}" data-page-id="${referringPageId}"
                                     data-success="<fmt:message key="page.widget.addedToPage"/>">
                                 <fmt:message key="page.widget.addToPage"/>
                             </button>
@@ -119,7 +119,7 @@
 		                    <i class="icon-thumbs-down" title="${widgetDislikes}&nbsp;<fmt:message key="page.widget.rate.dislikes"/>"></i>
                         </span>
                     </div>
-                    <div id="rating-${widget.id}" class="ratingButtons" data-toggle="buttons-radio">
+            <div id="rating-${widget.id}"  data-toggle="buttons-radio">
                     	<button id="like-${widget.id}" class="widgetLikeButton btn btn-mini ${widgetsStatistics[widget.id].userRating==10? 'active btn-success':''}"
                                 ${widgetsStatistics[widget.id].userRating==10 ? " checked='true'":""} name="rating-${widget.id}">
                             <fmt:message key="page.widget.rate.likebtn"/> 
@@ -137,8 +137,8 @@
                 <div class="detail-widget-users">
                     <c:set var="widgetUserCountGreaterThanZero"
                            value="${widgetStatistics != null && widgetStatistics.totalUserCount > 0}"/>
-                    <c:if test="${widgetUserCountGreaterThanZero}"><a href="javascript:void(0);"
-                                                                      onclick="rave.displayUsersOfWidget('${widget.id}');"></c:if>
+            <c:if test="${widgetUserCountGreaterThanZero}"><a href="javascript:void(0);" id="displayUsersOfWidgetLink"
+                                                              data-widget-id="${widget.id}"></c:if>
                     <fmt:formatNumber groupingUsed="true" value="${widgetStatistics.totalUserCount}"/>&nbsp;<fmt:message
                             key="page.widget.usercount"/>
                     <c:if test="${widgetUserCountGreaterThanZero}"></a></c:if>
@@ -230,7 +230,6 @@
                                         </c:if>
                                     </p>
                                     <p class="commentText"><c:out value="${comment.text}"/></p>
-
                                 </li>
                             </c:forEach>
                         </ul>
@@ -259,9 +258,39 @@
 
 <portal:register-init-script location="${'AFTER_RAVE'}">
     <script>
-        $(function () {
-            rave.store.init('<c:out value="${referringPageId}"/>');
-            rave.store.initTags("<c:out value="${widget.id}"/>");
-        });
+        require(["rave", "ui", "portal/rave_store", "jquery"], function(rave, ui, raveStore, $){
+            //Helper function for callback below
+            function addWidgetToPageCallback (result){
+                var widgetTitle = ui.getClientMessage("widget.add_prefix");
+
+                if (result != undefined && result.title != undefined && result.title.length > 0) {
+                    widgetTitle = result.title;
+                }
+                ui.showInfoMessage(widgetTitle + ' ' + ui.getClientMessage("widget.add_suffix"));
+
+                // Update Add Widget button to reflect status
+                var addWidgetButton = "#addWidget_" + result.widgetId;
+                var addedText = '<i class="icon icon-ok icon-white"></i> ' + $(addWidgetButton).data('success');
+
+                $(addWidgetButton).removeClass("btn-primary").addClass("btn-success").html(addedText);
+            }
+
+            rave.registerOnInitHandler(function(){
+                $('.widgetJspAddWidgetButton').click(function(){
+                    var element = $(this);
+                    var widgetId = element.data('widget-id');
+                    var pageId = element.data('page-id');
+                    rave.api.rpc.addWidgetToPage({widgetId: widgetId, pageId: pageId, redirectAfterAdd: true, successCallback: addWidgetToPageCallback})
+                })
+
+                $('#displayUsersOfWidgetLink').click(function(){
+                    ui.displayUsersOfWidget($(this).data('widget-id'))
+                })
+
+                rave.init();
+                raveStore.init('<c:out value="${referringPageId}"/>');
+                raveStore.initTags("<c:out value="${widget.id}"/>");
+            })
+        })
     </script>
 </portal:register-init-script>

@@ -29,7 +29,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <%-- jquery scripts --%>
 <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.7.2.min.js"></script>
-<script src="<spring:url value="/static/script/jquery-ui.min.js"/>"></script>
+<script src="<spring:url value="/static/script/jquery.urldecoder.min.js"/>"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.17/jquery-ui.min.js"></script>
 <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/v1.3/jquery.ba-hashchange.min.js"></script>
@@ -57,10 +57,12 @@
 
     var e = document.getElementById("groupSelector");
     if (currentGroup) {
-        for(var i = 0, j = e.options.length; i < j; ++i) {
-            if(e.options[i].value === currentGroup) {
-                e.selectedIndex = i;
-                break;
+        if (e != null) {
+            for(var i = 0, j = e.options.length; i < j; ++i) {
+                if(e.options[i].value === currentGroup) {
+                    e.selectedIndex = i;
+                    break;
+                }
             }
         }
     } else {

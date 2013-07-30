@@ -180,7 +180,7 @@ var rave = _.extend(rave, (function () {
 
     function showInfoMessage(message) {
 
-        var markup = rave.ui.templates['info-message']({
+        var markup = raveTemplates.templates['info-message']({
             message: message
         });
 
