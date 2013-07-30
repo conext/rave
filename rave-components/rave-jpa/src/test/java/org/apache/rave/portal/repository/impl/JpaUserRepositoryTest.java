@@ -19,12 +19,12 @@
 
 package org.apache.rave.portal.repository.impl;
 
-import junit.framework.Assert;
 import org.apache.rave.model.Authority;
-import org.apache.rave.portal.model.JpaUser;
 import org.apache.rave.model.User;
+import org.apache.rave.portal.model.JpaUser;
 import org.apache.rave.portal.repository.AuthorityRepository;
 import org.apache.rave.portal.repository.UserRepository;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,8 +38,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -141,6 +148,13 @@ public class JpaUserRepositoryTest {
         authority = authorityRepository.get("1");
         Assert.assertNotNull("Authority has not been removed after deleting user", authority);
         Assert.assertEquals("Authority has original amount of users", usercount, authority.getUsers().size());
+    }
+
+    @Test
+    public void getAll(){
+        List<User> users = repository.getAll();
+        assertNotNull(users);
+        assertThat(users.size(), is(13));
     }
 
     @Test
