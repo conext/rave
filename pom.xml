@@ -35,10 +35,10 @@
     <version>0.22-ci-SNAPSHOT</version>
 
     <scm>
-        <connection>scm:git:git@github.com:conext/shindig.git</connection>
-        <developerConnection>scm:git:git@github.com:conext/shindig.git</developerConnection>
-        <url>scm:git:git@github.com:conext/shindig.git</url>
-    </scm>
+        <connection>scm:git:git@github.com:conext/rave.git</connection>
+        <developerConnection>scm:git:git@github.com:conext/rave.git</developerConnection>
+        <url>scm:git:git@github.com:conext/rave.git</url>
+  </scm>
 
     <properties>
         <apache.shindig.version>2.5.0.ci</apache.shindig.version>
