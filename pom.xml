@@ -29,7 +29,6 @@
         <relativePath>../rave-master-pom/pom.xml</relativePath>
     </parent>
 
-    <groupId>org.apache.rave</groupId>
     <artifactId>rave-project</artifactId>
     <name>Apache Rave :: rave-project</name>
     <description>Apache Rave Project</description>
@@ -37,9 +36,9 @@
     <version>0.22-ci-SNAPSHOT</version>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/rave/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/rave/trunk</developerConnection>
-        <url>http://svn.apache.org/viewvc/rave/trunk/</url>
+        <connection>scm:git:https://github.com/conext/rave/tree/0.22-ci-RELEASE</connection>
+        <developerConnection>scm:git:https://github.com/conext/rave/tree/0.22-ci-RELEASE</developerConnection>
+        <url>https://github.com/conext/rave/tree/0.22-ci-RELEASE/</url>
     </scm>
 
     <properties>
