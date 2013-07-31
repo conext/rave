@@ -126,6 +126,16 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <executions>
+                    <execution>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>com.googlecode.mavenfilesync</groupId>
                 <artifactId>maven-filesync-plugin</artifactId>
                 <configuration>
