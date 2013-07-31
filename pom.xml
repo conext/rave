@@ -32,12 +32,13 @@
     <name>Apache Rave :: rave-project</name>
     <description>Apache Rave Project</description>
     <packaging>pom</packaging>
-    <version>0.22-ci-SNAPSHOT</version>
+    <version>0.22-ci</version>
 
     <scm>
         <connection>scm:git:git@github.com:conext/rave.git</connection>
         <developerConnection>scm:git:git@github.com:conext/rave.git</developerConnection>
         <url>scm:git:git@github.com:conext/rave.git</url>
+    <tag>rave-project-0.22-ci</tag>
   </scm>
 
     <properties>

@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.apache.rave</groupId>
         <artifactId>rave-project</artifactId>
-        <version>0.22-ci-SNAPSHOT</version>
+        <version>0.22-ci</version>
     </parent>
 
     <artifactId>rave-custom-project-archetype</artifactId>
